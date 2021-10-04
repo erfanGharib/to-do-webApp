@@ -310,7 +310,8 @@ body_part.onload = () => {
 }
 
 setInterval(() => {
-    document.body.style.top = 0;
+    document.body.style.top = 0;    
+    document.body.style.position = 'fixed';
     if (num_4===1||num_4===3) search_box_v.style.display='none';
     else if(num_4===0||num_4===2) search_box_v.style.display='flex';
 }, 1);
