@@ -1,0 +1,43 @@
+:root {
+    --text-color:#22303d;
+    --header-text-color:#22303d;
+    --header-background:#ee6671;
+    --border-color:#d6d6d6;
+    --hover-color:#22303d36;
+    --massage-back:#22303d;
+
+    --delete-warn-color:#fffefb;
+    
+    --body-background:#fffefb;
+    --delete-btn-color:#fffefb;
+    --selection-bg:#22303d;
+    --selection-color:#f6f6f6;
+    --light-green:#22e98c;
+    --light-green-hover:#2acc80;
+
+    --header-font-size:17px;
+    --todo-text-font-size:17px;
+    --side-bar-font-size:19px;
+}
+.app-logo {
+    background: url(../img/full-logo.svg) no-repeat;
+    width: 140px;
+    height: 45px;
+    filter: none;
+}
+
+@media (max-width:768px) {
+    .app-logo {
+        background: url(../img/logo.svg) no-repeat !important;
+        margin-left: 6px;
+        width: 57px !important;
+    }
+}
+@media (max-width:425px) {
+    .app-logo {
+        background: url(../img/logo.svg) no-repeat !important;
+        margin-left: 6px;
+        width: 40px !important;
+        margin-top: 45px !important;
+    }
+}
