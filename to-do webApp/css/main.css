@@ -95,7 +95,7 @@ header {
     overflow: hidden;
 }
 button {
-    font-family: montserrat,iranian sans,arial;
+    font-family: montserrat,iranian sans,arial !important;
 }
 main {
     height: 100%;
