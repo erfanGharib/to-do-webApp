@@ -13,10 +13,10 @@ let home_html_code = `
             <button class="slider-btn" onclick="slider_left_angle()"><i class="fi-rr-angle-small-left"></i></button>
             <button class="slider-btn" style="box-shadow: -3px 0 10px #22303d1f;margin-left: auto;" onclick="slider_right_angle()"><i class="fi-rr-angle-small-right"></i></button>
             <span id="slider-child" style="left: 0;">
-                <span class="slider-child-part fourth"><img height="190px" src="video/image_processing20191022-29550-158wqf6.gif" style="margin-top: 40px;"/></span>
-                <span class="slider-child-part third"><img height="190px" src="video/halloween-trailer_dribbble_1.gif"/></span>
-                <span class="slider-child-part second"><img height="150px" src="video/image_processing20200130-7625-re3ytg.gif" style="margin-top: 30px;"/></span>
-                <span class="slider-child-part first"><video width="80%" src="video/Dribbble_1600x1200.mp4" controls autoplay loop></video></span>
+                <span class="slider-child-part fourth"></span>
+                <span class="slider-child-part third"></span>
+                <span class="slider-child-part second"></span>
+                <span class="slider-child-part first"></span> 
             </span>
         </div> 
     </span>
@@ -310,8 +310,12 @@ body_part.onload = () => {
 }
 
 setInterval(() => {
-    document.body.style.top = 0;    
+    document.body.style.top = 0;
     document.body.style.position = 'fixed';
+    if(document.querySelector('font')!=null) {
+        document.querySelector('#goog-gt-tt').style.display="none";
+    }
+
     if (num_4===1||num_4===3) search_box_v.style.display='none';
     else if(num_4===0||num_4===2) search_box_v.style.display='flex';
 }, 1);
@@ -319,6 +323,7 @@ setInterval(() => {
 // set side bar icon event listeners
 for (let icon = 0; icon < side_bar_icon.length; icon++) {
     side_bar_icon[icon].addEventListener('click', function side_bar_icon_function() {
+        let google_translate = document.querySelector('#translate');
         side_bar_icon[0].classList.remove('side-bar-icon-border');
         side_bar_icon[1].classList.remove('side-bar-icon-border');
         side_bar_icon[2].classList.remove('side-bar-icon-border');
@@ -338,6 +343,7 @@ for (let icon = 0; icon < side_bar_icon.length; icon++) {
         if (icon == 1) {
             font_size_check_box();
             app_theme_function();
+            google_translate.classList.remove('display-none');
         }
         else if (icon == 2) {
             if (L_S.getItem(`saved-note`) !== null)
@@ -346,6 +352,9 @@ for (let icon = 0; icon < side_bar_icon.length; icon++) {
             get_page_data();
             done_btn_function();
             ToDo_note_iconS_function();
+        }
+        else if(icon==3) {
+            google_translate.classList.remove('display-none');
         }
     });
 }
