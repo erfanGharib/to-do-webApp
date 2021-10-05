@@ -94,6 +94,9 @@ header {
     width: 100%;
     overflow: hidden;
 }
+button {
+    font-family: montserrat,iranian sans,arial;
+}
 main {
     height: 100%;
     width: 100%;
