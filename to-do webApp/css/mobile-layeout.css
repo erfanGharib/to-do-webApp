@@ -86,7 +86,7 @@ header {
 .search-filter {
     min-height: 33px;
     width: 45px;
-    font-size: var(--header-font-size);
+    font-size: var(--header-font-size) !important;
 }
 #search-filter-btn>b {
     display: none;
@@ -215,7 +215,7 @@ body {
     height: 40px;
     font-size: 17px;
 }
-#setting-page, #saved-page, .about-page-text{
+#setting-page, #saved-page, .about-page-part{
 	margin:15px 0 0 10px;
     overflow-y: scroll;
 }
