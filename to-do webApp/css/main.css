@@ -48,6 +48,10 @@
 .goog-logo-link,.goog-te-banner-frame, .goog-te-gadget>span {
     display: none;
 }
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
+}
 .goog-te-gadget {
     color: rgba(180, 179, 179, 0) !important;
 }
