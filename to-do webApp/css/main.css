@@ -3,6 +3,11 @@
     margin: 0;
     outline: none;
 }
+:root {
+    --header-font-size:17px;
+    --todo-text-font-size:17px;
+    --side-bar-font-size:19px; 
+}
 ::selection {
     color: var(--selection-color);
     background: var(--selection-bg);
