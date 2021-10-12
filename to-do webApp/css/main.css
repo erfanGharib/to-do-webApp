@@ -270,14 +270,15 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .search-sugestion-child,#not-found-text {
     min-height:43px;
     width: 90%;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid #d6d6d6;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:0 30px;
+    color:var(--header-text-color);
 }
 .search-sugestion-child:hover {
-    background: var(--border-color);
+    background: #d6d6d6;
 }
 #search-filter-btn {
     margin-right: 10px;
