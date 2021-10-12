@@ -264,7 +264,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     border-radius: 0 0 6px 6px;
     scrollbar-width: thin;
     overflow: hidden scroll;
-    background: var(--body-background);
+    background: #fffefb;
     box-shadow: 0 8px 10px #21262b79; 
 }
 .search-sugestion-child,#not-found-text {
