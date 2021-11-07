@@ -19,8 +19,10 @@ header {
     width: 100%;
 }
 #main-top-part-add-ToDo {
-    margin-top: 12px;
+    margin: 12px 0 0 0 !important;
     width: 93%;
+    height: fit-content !important;
+    height: -moz-fit-content;
 }
 .ToDo-note-part {
     width: 98%;
@@ -78,6 +80,7 @@ header {
     min-height: 50px !important;
     overflow: hidden;
     margin: 0 0 0 13px;
+    width: 40px;
 }
 #search-input {
     width: 70%;
