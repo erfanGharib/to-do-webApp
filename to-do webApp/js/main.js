@@ -186,7 +186,7 @@ var num_6 = 0;
 
 let set_timeout;
 let remove_interval;
-let $input;
+let input_;
 
 // place page html code in array
 let page_html_code_arr = [home_html_code, setting_html_code, saved_html_code, about_html_code];
@@ -479,7 +479,7 @@ function create_todo__show_popUp() {
 
         let search_inp_subString = `${add_toDo_note_input.value.substring(0,20)}...`;
         let insert_zero_before_day = _date.getDate()<10 ? '0'+_date.getDate() : _date.getDate();
-        let insert_zero_before_month = _date.getMonth()<10 ? (_date.getMonth()+1) : '0'+_date.getMonth()+1;
+        let insert_zero_before_month = _date.getMonth()<10 ? '0'+(_date.getMonth()+1) : (_date.getMonth()+1);
 
         search_sugestion.innerHTML += `<span class="search-sugestion-child display-none"><b>${search_inp_subString}</b> <b id="date-">${_date.getFullYear()}-${insert_zero_before_month}-${insert_zero_before_day}</b></span>`;
         no_added_toDo_text.style.display = "none";
@@ -537,11 +537,11 @@ function ToDo_note_iconS_function() {
     }
 }
 function ToDo_note_checkBox(input) {
-    $input = input; 
-    $input.firstElementChild.setAttribute('checked', 'checked');
-    $input.firstElementChild.checked=true;
+    input_ = input; 
+    input_.firstElementChild.setAttribute('checked', 'checked');
+    input_.firstElementChild.checked=true;
 
-    $input.parentElement.querySelector('div').style.display='none';
+    input_.parentElement.querySelector('div').style.display='none';
 
     if (num_4==2) {
         L_S.setItem('saved-note', document.querySelector('#saved-to-do-grid').innerHTML);
@@ -611,11 +611,15 @@ function search_input() {
     search_box_v.classList.add('search-box-bg');
 }
 function search_box_mouseleave() {
+    let google_translate = document.querySelector('#translate');
     set_timeout = setTimeout(()=>{
         search_sugestion.style.display = 'none';
         search_box_v.classList.remove('search-box-bg');
+        search_box_v.classList.remove('increase-width-mobile');
+        search_box_v.classList.remove('increase-width');
+        google_translate.classList.toggle('display-none');
         search_input_v.blur();
-    },3000)
+    },2500)
 }
 function clear_timeout() {
     clearTimeout(set_timeout);
