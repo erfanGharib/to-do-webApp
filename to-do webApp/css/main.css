@@ -47,15 +47,11 @@
     background: #22303d27;
 }
 .background {
-    background: #22303d27;
+    background: #afafaf70;
 }
 
 .goog-logo-link,.goog-te-banner-frame, .goog-te-gadget>span {
     display: none;
-}
-.goog-text-highlight {
-    background: none !important;
-    box-shadow: none !important;
 }
 .goog-te-gadget {
     color: rgba(180, 179, 179, 0) !important;
@@ -99,9 +95,6 @@ header {
     width: 100%;
     overflow: hidden;
 }
-button {
-    font-family: montserrat,iranian sans,arial !important;
-}
 main {
     height: 100%;
     width: 100%;
@@ -123,8 +116,8 @@ input::placeholder{
     color: var(--header-text-color);
 }
 textarea::placeholder{
-    opacity: .5;
-    color: var(--text-color);
+    opacity: 1;
+    color: var(--border-color);
 }
 h4,figcaption {
     font-weight: 400;
@@ -207,6 +200,7 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     border-radius: 6px;
     transition: .2s;
     height: 42px;
+    padding-bottom: 3px;
 }
 .search-box-bg {
     background: #fffefb;
@@ -270,15 +264,14 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 .search-sugestion-child,#not-found-text {
     min-height:43px;
     width: 90%;
-    border-top: 1px solid #d6d6d6;
+    border-top: 1px solid var(--border-color);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding:0 30px;
-    color:var(--header-text-color);
 }
 .search-sugestion-child:hover {
-    background: #d6d6d6;
+    background: var(--border-color);
 }
 #search-filter-btn {
     margin-right: 10px;
@@ -295,6 +288,12 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     transition: .5s;
     font-size: var(--header-font-size);
     margin-left: 20px;
+    /* filter: invert() saturate(0%) brightness(100%) sepia(20%); */
+    
+}
+.goog-text-highlight {
+    background: none !important;
+    box-shadow: none !important;
 }
 .goog-te-combo {
     font: 600 var(--header-font-size) montserrat,iranian sans,arial !important;
@@ -358,7 +357,8 @@ h4 {
 
 #main-top-part-add-ToDo {
     width: 96%;
-    height: 120px;
+    height: fit-content;
+    height: -moz-fit-content;
     display: flex;
     justify-content: space-between;
     flex-direction: row;
@@ -388,7 +388,6 @@ h4 {
     border-radius: 0;
     position: relative;
     cursor: pointer;
-    /* left:511px; */
 }
 .slider-btn.second {
     box-shadow: -3px 0 10px #22303d1f;
@@ -463,9 +462,9 @@ h4 {
 .app-massage {
     transition: .5s;
     z-index: 3;
-    animation:translate .5s forwards alternate; 
-    background: var(--massage-back);
-    color: var(--border-color);
+    animation:translate .5s forwards alternate;
+    background: rgba(235, 235, 235, 0.87);
+    color: var(--header-text-color);
     padding:10px;
     right: 0;
     display: flex;
@@ -578,8 +577,8 @@ h4 {
 }
 .check:after {
     content: "";
-    height: 70px;
-    width: 100%;
+    height: 80px;
+    width: 110%;
     position: relative;
 } 
 .checkBox-label input:checked ~ .check:after { 
@@ -599,8 +598,8 @@ h4 {
 
 #main-bottom-part-added-note {
     width: 98%;
-    min-height:450px;
-    max-height:450px;
+    min-height:410px;
+    max-height:410px;
     color: var(--text-color);
     display: grid;
     grid-template-columns: repeat(3,1fr);
@@ -617,7 +616,7 @@ h4 {
     color: var(--border-color);
     font:600 24px montserrat,iranian sans,arial;
     position: absolute;
-    margin-top: 40px;
+    margin: 40px 5px 0 10px;
 }
 
 
@@ -856,6 +855,7 @@ strong,p {
 .delete-data-warning {
     text-align: center;
     width: 320px;
+    margin: 0 7px;
     height: 210px;
     background: var(--delete-warn-color);
     color: var(--header-text-color);
