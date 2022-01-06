@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" onresize="change_font_size()">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- theme -->
+    <link rel="stylesheet" type="text/css" id="root-styleSheet" href="css/light-theme-root.css">
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" media="(max-width:768px)" href="../css/tablet-layeout.css">
+    <link rel="stylesheet" type="text/css" media="(max-width:425px)" href="../css/mobile-layeout.css">
+    <!-- icons -->
+    <link rel="stylesheet" type="text/css" href="../css/icons.css">
+    <!-- favicon -->
+    <link rel="icon" href="../assets/favicon/logo.svg">
+
+    <title>To-Do App</title>
+</head>
+
+<body>
+    <div id="left-side-bar">
+        <i class="app-logo"></i>
+        <div>
+            <button class="side-bar-icon side-bar-icon-border"><i class="fi-rr-home"></i>Home</button>
+            <button class="side-bar-icon"><i class="fi-rr-settings"></i>Setting</button>
+            <button class="side-bar-icon"><i style="min-width: 23px;min-height: 23px;" class="fi-rr-bookmark-sidebar"></i>Saved</button>
+            <button class="side-bar-icon"><i class="fi-rr-info"></i>About</button>
+        </div>
+    </div>
+
+    <div id="center-part">
+        <header>
+            <div id="translate">
+                <i class="fi-rr-globe"></i>
+                <div id="google-translate-element">
+                </div>
+            </div>
+
+            <div onmouseover="clear_timeout()" onmouseleave="search_box_mouseleave()" class="search-box">
+                <div id="search-box-child-1">
+                    <span id="search-btn-inp">
+                        <span id="search-button" onclick="increas_searchBox_width()"><i class="fi-rr-search"></i></span>
+                        <input oninput="search_box()" onclick="search_input();search_box()" type="search" id="search-input" placeholder="search the list.." spellcheck="false">
+                    </span>
+
+                    <span id="search-filter-btn">
+                        <b style="color:var(--header-text-color)">filter :</b>
+                        <button class="search-filter" onclick="search_date_filter()">date</button>
+                        <button class="search-filter background" onclick="search_text_filter()">text</button>
+                    </span>
+                </div>
+
+                <span id="search-sugestion" class="skiptranslate">
+                    <span id="not-found-text" style="justify-content:center;"><b>not found</b></span>
+                </span>
+            </div>
+        </header>
+
+        <main>
+            <span id="main-top-part-add-ToDo">
+                <div id="add-ToDo-part">
+                    <textarea id="add-ToDo-input" placeholder="Type your note.." spellcheck="false"></textarea>
+                    <span id="add-ToDo-btn" onclick="create_todo__show_popUp()"><i class="fi-rr-plus"></i></span>
+                </div>
+
+                <div id="slider">
+                    <button class="slider-btn" onclick="slider_left_angle()"><i class="fi-rr-angle-small-left"></i></button>
+                    <button class="slider-btn" style="box-shadow: -3px 0 10px #22303d1f;margin-left: auto;" onclick="slider_right_angle()"><i class="fi-rr-angle-small-right"></i></button>
+                    <span id="slider-child" style="left: 0;">
+                        <span class="slider-child-part fourth"></span>
+                        <span class="slider-child-part third"></span>
+                        <span class="slider-child-part second"></span>
+                        <span class="slider-child-part first"></span>
+                    </span>
+                </div> 
+            </span>
+
+            <span id="main-bottom-part-added-note">
+                <p id="no-added-toDo-text">No to do note added yet</p>
+            </span>
+        </main>
+    </div>
+
+    <div class="fill-input-error-massage app-massage display">
+        <i class="fi-rr-x-icon"></i> <p>Write Some Note first<br>and Click on Add Button</p>
+    </div>
+
+    <div class="unexpected-character app-massage display">
+        <i class="fi-rr-x-icon" style="margin-top:0;"></i> <p>Unexpected Characters "<",">"</p>
+    </div>
+
+    <div class="copied-massage app-massage display"> 
+            <i class="fi-rr-check"></i> <p>Link Copied to Clipboard</p>
+    </div>
+
+    <div class="note-saved-massage app-massage display">
+            <i class="fi-rr-check"></i> <p>Your Note Has Been Saved</p>
+    </div>
+
+    <div class="doesnt-support-on-firefox app-massage display">
+        <i class="fi-rr-x-icon"></i> <p>This Theme Does Not <br>Support On Firefox</p>
+    </div>
+
+    <div class="body-overlay display-none">
+        <span class="delete-data-warning display-none">
+            <i class="fi-rr-danger-icon"></i>
+            <p>
+                This will delete all app data <br>
+                Press delete to continue.
+            </p>
+            <span>
+                <button class="cancle-btn warning-btn">Cancle</button>
+                <button class="delete-btn warning-btn">Delete</button>
+            </span>
+        </span>
+    </div>
+</body>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" src="../js/main.js"></script>
+</html>
