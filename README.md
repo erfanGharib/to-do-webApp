@@ -11,7 +11,7 @@
   -image slider on desktop veiw<br>
   -customize app with changing theme and font size<br>
   -delete all saved data<br>
-  -control on saved notes<br>
+  -control saved notes<br>
   
 # Project Link
   https://to-do-web-app-eta.vercel.app/
