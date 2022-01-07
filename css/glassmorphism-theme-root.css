@@ -1,0 +1,62 @@
+:root {
+    --text-color:#f6f6f6;
+    --header-text-color:#22303d;
+    --header-background:#f6f6f6;
+    --border-color:#f6f6f6;
+    --hover-color:#eeeeee44;
+    --massage-back:#eeeeee;
+    --delete-btn-color:#22303d;
+    --body-background:url(../img/glassmorphism-bg.svg);
+    --selection-bg:#f6f6f6;
+    --selection-color:#22303d;
+    --light-green:#22e98c;
+    --light-green-hover:#2acc80;
+
+    --delete-warn-color:#fffefb;
+    
+    --header-font-size:17px;
+    --todo-text-font-size:17px;
+    --side-bar-font-size:19px;
+}
+#add-ToDo-btn:hover {
+    background: #c7c7c7;
+}
+i {  
+    filter: invert() saturate(0%) brightness(115%);
+}
+
+textarea::placeholder {
+    opacity: .7;
+}
+#add-ToDo-part, #left-side-bar, #slider,
+.ToDo-note-part, header, #copy-link-box,
+.chose-theme-part-option {
+    box-shadow: 0 5px 17px #22303d6c;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(21px);
+}
+#copy-link-btn:hover .fi-rr-copy-alt {
+    filter: invert(0) !important;
+}
+.app-logo {
+    background: url(../img/full-logo-glassmorphism.svg) no-repeat;
+    width: 140px;
+    height: 45px;
+    filter: none;
+}
+
+@media (max-width:768px) {
+    .app-logo {
+        background: url(../img/logo-glassmorphism.svg) no-repeat !important;
+        margin-left: 6px;
+        width: 57px !important;
+    }
+}
+@media (max-width:425px) {
+    .app-logo {
+        background: url(../img/logo-glassmorphism.svg) no-repeat !important;
+        margin-left: 6px;
+        width: 40px !important;
+        margin-top: 45px !important;
+    }
+}

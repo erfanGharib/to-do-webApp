@@ -1,0 +1,255 @@
+header {
+    min-height: 60px;
+}
+#saved-page-header , h2{
+    font-size: 23px !important;
+    margin:0
+}
+#left-side-bar {
+    min-width: 57px !important;
+    width: 57px !important;
+}
+#left-side-bar>div {
+    margin-top: 20px;
+}
+.app-logo {
+    margin-left: 0 !important;
+}
+#center-part {
+    width: 100%;
+}
+#main-top-part-add-ToDo {
+    margin: 12px 0 0 0 !important;
+    width: 93%;
+    height: fit-content !important;
+    height: -moz-fit-content;
+}
+.ToDo-note-part {
+    width: 98%;
+    margin: 0 0 15px 0;
+    min-height: 110px;
+}
+#add-ToDo-btn {
+    min-width: 25px;
+}
+#ToDo-note-icon-part {
+    height: 43px;
+}
+#main-bottom-part-added-note {
+    margin-top: 15px;
+    min-height: 370px;
+    max-height: 370px;
+    overflow-y: scroll;
+}
+#search-sugestion {
+    position: absolute;
+    top: 54px;
+    padding-right: 2px;
+}
+.search-sugestion-child,#not-found-text {
+    min-height: 50px !important;
+    height: 50px !important;
+    width: 91%;
+}
+.ToDo-note-iconS, .check {
+    height: 15px !important;
+    width: 15px !important;
+    min-width: 15px !important;
+    margin: 0;
+}
+.fi-rr-home, .fi-rr-settings, 
+.fi-rr-info, .fi-rr-bookmark-sidebar,
+.fi-rr-globe, .fi-rr-copy-alt,
+.fi-rr-search, .fi-rr-danger-icon, 
+.fi-rr-check, .fi-rr-x-icon {
+    min-width: 23px !important;
+    min-height: 23px !important;
+}
+.fi-rr-plus,.fi-rr-bookmark-todo-part,
+.fi-rr-trash, .fi-rr-pencil {
+    min-width: 17px !important;
+    min-height: 17px !important;
+}
+.side-bar-icon {
+    height: 55px !important;
+    margin-top: 15px;
+    display: flex;
+    padding-left: 22px;
+}
+.search-box {
+    min-height: 50px !important;
+    overflow: hidden;
+    margin: 0 0 0 13px;
+    width: 40px;
+}
+#search-input {
+    width: 70%;
+    font-size: var(--header-font-size);
+}
+.search-filter {
+    min-height: 33px;
+    width: 45px;
+    font-size: var(--header-font-size) !important;
+}
+#search-filter-btn>b {
+    display: none;
+    margin: 0;
+}
+#add-ToDo-input {
+    font-size: 20px;
+}
+#no-added-toDo-text {
+    font-size: 20px;
+    margin-top: 0;
+}
+#saved-page {
+    margin-left: 25px;
+    margin-top: 15px;
+}
+#about-page-text {
+    margin: 13px 0 0 13px;
+}
+
+#setting-page>h2 {
+    font-size: 24px !important;
+}
+
+.about-page-part>strong, #about-page-text>p {
+    font-size: 16px;
+    line-height: 20px;
+}
+#about-page-text>p {
+    position: relative;
+    bottom: 20px;
+}
+.about-page-part>p {
+    font-size: 14px;
+    margin-top: 0 !important;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+}
+.about-page-part {
+    min-height: 300px !important;
+}
+
+#set-font-size-part {
+    width: auto;
+    margin-top: 15px !important;
+}
+#set-font-size-part>span>h4 {
+    margin: 10px 0;
+}
+#set-font-size-part>span {
+    font-size: 15px;
+    width: 100px !important;
+    margin:5px 0 5px 0;
+}
+#set-font-size-part>h3 {
+    font-size: 18px;
+}
+#setting-theme-part>h3,#delete-all-data-box>h3{
+    font-size: 18px !important;
+}
+.font-size-checkBox-label {
+    width: auto;
+}
+.-check {
+    width: 18px !important;
+    height: 18px;
+}
+.chose-theme-part-option {
+    height: 70px;
+    width:auto;
+    margin:15px 10px 0 0;
+}
+.chose-theme-part-option>figcaption {
+    font-size: 15px !important;
+    line-height: 23px;
+}
+.chose-theme-part-option>img {
+    height: 70px !important;
+    width:70px !important;
+}
+body {
+    overflow: hidden;
+}
+#copy-link-box {
+    min-width: 210px;
+    width: 130px;
+    height: 20px;
+    margin: 0 0 0 10px;
+}
+#copy-link-inp {
+    font-size: 16px;
+    min-width: 60px;
+    margin-left: 0;
+}
+#copy-link-btn {
+    width: 60px;
+    height: 30px;
+    padding: 0 0 0 7px;
+}
+.fi-rr-copy-alt {
+    min-width: 10px !important;
+    min-height: 10px !important;
+    margin: 0;
+}
+.created-date {
+    font-size: 15px !important;
+}
+#add-ToDo-input {
+    font-size: 17px;
+    min-width: 50px;
+    width: 100%;
+}
+#add-ToDo-part {
+    width: 100%;
+}
+#translate {
+    margin-left: 13px;
+}
+.goog-te-combo {
+    font-size: var(--header-font-size);
+    width: 90% !important;
+}
+#delete-data-btn {
+    margin-top: 0;
+    min-width: 90px;
+    height: 40px;
+    font-size: 17px;
+}
+#setting-page, #saved-page, .about-page-part{
+	margin:15px 0 0 10px;
+    overflow-y: scroll;
+}
+#about-page-text {
+    width: 95% !important;
+}
+#saved-to-do-grid {
+    overflow-y: scroll;
+    min-height: 420px;
+    max-height: 420px;
+}
+#set-font-size-part,#delete-all-data-box {
+    min-height: 160px;
+}
+.left {
+    margin-left:15px !important;
+}
+.delete-data-warning {
+    text-align: center;
+    width: 290px;
+    height: 200px; 
+}
+.delete-data-warning>span {
+    width: 60% !important;
+}
+.delete-data-warning>p {
+    font-size:17px;
+}
+.delete-btn, .cancle-btn {
+    min-width: 90px !important;
+    height: 40px;
+    border: none;
+    font-size: 17px;
+}
