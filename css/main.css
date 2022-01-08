@@ -146,21 +146,15 @@ button, input, select, textarea, body, p, b, div, span, figcaption, input::place
 .ToDo-note-check-box { 
     display: none;
 }
-
-.search-filter.background {
-    background: #22303d27;
-}
 .background {
     background: #afafaf70;
 }
-
 .goog-logo-link,.goog-te-banner-frame, .goog-te-gadget>span {
     display: none;
 }
 .goog-te-gadget {
     color: rgba(180, 179, 179, 0) !important;
 }
-
 .display {
     animation: _translate .4s !important;
 }
@@ -169,11 +163,11 @@ button, input, select, textarea, body, p, b, div, span, figcaption, input::place
 }
 .increase-width {
     width: 88% !important;
-    margin: 0 auto !important;
+    margin: 0;
 }
 .increase-width-mobile {
     width: 92% !important;
-    margin: 0 auto !important;
+    margin: 0;
     padding: 0 !important;
 }
 .body-overlay {
@@ -187,6 +181,9 @@ button, input, select, textarea, body, p, b, div, span, figcaption, input::place
     z-index: 4;
 }
 
+.search-filter.background {
+    background: #22303d27;
+}
 .search-box {
     margin-right:25px;
     display: flex;
@@ -297,9 +294,6 @@ button, input, select, textarea, body, p, b, div, span, figcaption, input::place
 }
 h4 {
     display: flex;
-}
-.checked-unchecked-text {
-    font-size: 15px !important;
 }
 
 #left-side-bar {

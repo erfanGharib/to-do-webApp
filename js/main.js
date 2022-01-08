@@ -1,177 +1,30 @@
 var saved_toDo = '';
 
 // pages html code variables
-let page_content_$html = [
-    fetch('./components/home-page/home.html').then(res=>res.text()),
-    fetch('./components/about-page/about.html').then(res=>res.text()),
-    fetch('./components/about-page/about.html').then(res=>res.text()),
-    fetch('./components/setting-page/setting.html').then(res=>res.text())
-]
-let home_html_code = `
-<main>
-    <span id="main-top-part-add-ToDo">
-        <div id="add-ToDo-part">
-            <textarea id="add-ToDo-input" placeholder="Type your note.." spellcheck="false"></textarea>
-            <span id="add-ToDo-btn" onclick="create_todo__show_popUp()"><i class="fi-rr-plus"></i></span>
-        </div>
+const page_content_$html = [
+    fetch('./components/home.html').then(res=>res.text()),
+    fetch('./components/setting.html').then(res=>res.text()),
+    fetch('./components/saved-note.html').then(res=>res.text()),
+    fetch('./components/about.html').then(res=>res.text()),
+];
 
-        <div id="slider">
-            <button class="slider-btn" onclick="slider_left_angle()"><i class="fi-rr-angle-small-left"></i></button>
-            <button class="slider-btn" style="box-shadow: -3px 0 10px #22303d1f;margin-left: auto;" onclick="slider_right_angle()"><i class="fi-rr-angle-small-right"></i></button>
-            <span id="slider-child" style="left: 0;">
-                <span class="slider-child-part fourth"></span>
-                <span class="slider-child-part third"></span>
-                <span class="slider-child-part second"></span>
-                <span class="slider-child-part first"></span>            
-            </span>
-        </div> 
-    </span>
-
-    <span id="main-bottom-part-added-note">
-        <p id="no-added-toDo-text">No to do note added yet</p>
-    </span>
-</main>`;
-let setting_html_code = `
-<main>
-<div id="setting-page">
-<h2 style="margin-bottom: 3px;">Setting</h2>
-<div id="set-font-size-part">
-    <h3>Set Font Size</h3>
-    <span>
-        <h4>header</h4>
-        <div class="skiptranslate">
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-0" checked>
-                <span class="-check"></span> <b class="font-size">17px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-0">
-                <span class="-check"></span> <b class="font-size">19px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-0">
-                <span class="-check"></span> <b class="font-size">21px</b>
-            </label>
-        </div>
-    </span>
-
-    <span id="side-bar-font-size">
-        <h4>side bar</h4>
-        <div class="skiptranslate">
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-1">
-                <span class="-check"></span> <b class="font-size">17px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-1" checked>
-                <span class="-check"></span> <b class="font-size">19px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-1">
-                <span class="-check"></span> <b class="font-size">21px</b>
-            </label>
-        </div>
-    </span>
-
-    <span class="skiptranslate">
-        <h4>todo note</h4>
-        <div>
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-2" checked>
-                <span class="-check"></span> <b class="font-size">17px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-2">
-                <span class="-check"></span> <b class="font-size">19px</b>
-            </label>
-
-            <label class="font-size-checkBox-label">
-                <input type="checkbox" class="font-size-check-box-2">
-                <span class="-check"></span> <b class="font-size">21px</b>
-            </label>
-        </div>
-    </span>
-</div>
-
-<span class="border"></span>
-
-<div id="setting-theme-part">
-    <h3 style="grid-area:headline;">App Themes</h3>
-    <div>
-        <figure style="grid-area:default;" class="chose-theme-part-option background">
-            <img src="./assets/image/light.svg" height="95px" alt="Default theme preview">
-            <figcaption>Light</figcaption>
-        </figure>
-
-        <figure style="grid-area:dark;" class="chose-theme-part-option">
-            <img src="./assets/image/dark.svg" height="95px" alt="Dark theme preview">
-            <figcaption>Dark</figcaption>
-        </figure>
-
-        <figure style="grid-area:neomorphism;font-size:22px;" class="chose-theme-part-option">
-            <img src="./assets/image/glassmorphism.svg" height="95px" alt="Neomorphism theme preview">
-            <figcaption>Glassmorphism</figcaption>
-        </figure>
-    </div>
-</div>
-
-<span class="border margin"></span>
-
-<div id="delete-all-data-box">
-    <h3 style="display: inline;">Delete All Data</h3>
-    <button onclick="delete_all_data()" id="delete-data-btn">Delete</button> 
-</div>
-</div>
-</main>`;
-let saved_html_code = `
-<main>
-    <div id="saved-page">
-        <h2 id="saved-page-header">Saved To Do note</h2>
-        <div id="saved-to-do-grid"></div>
-    </div>
-</main>`;
-let about_html_code = `
-<span id="about-page-text">
-<span class="about-page-part">
-    <div id="about-page-p1"> 
-        <p style="margin-bottom:10px">Connect With Me :</p>
-        <span>Email: <a href=mailto:erfangharib5@gmail.com?subject='subject text'>erfangharib5@gmail.com</a></span>
-        <span>Instagram: <a href="https://www.instagram.com/___erfan_gh___/">@___erfan_gh___</a></span>
-        <span>Telegram: <a href="https://t.me/ERFAN_web_dev">@ERFAN_web_dev</a></span>
-    </div>
-
-    <div>
-        <p style="margin:20px 0 13px 0;">Share App Link With Friends :</p>
-        <div id="copy-link-box">
-            <input type="text" value="${window.location.href}" id="copy-link-inp" readonly/>
-            <button id="copy-link-btn" title="copy" onclick="copy_to_clip_board()"><i class="fi-rr-copy-alt"></i></button>
-        </div>
-    </div>
-</span>
-
-<p id="copy-right">Developed and Designed by Erfan Gharib <br>All Rights Reserved ©2021-2022</p>
-</span>`;
-
-// other app variables
 let _date = new Date;
 let L_S = localStorage;
 let body_part = document.body;
+let header = document.querySelector('header');
 let main_page_part = document.querySelector('main');
 let center_page_part = document.querySelector('#center-part');
-let copied_massage = document.querySelector('.copied-massage');
 let side_bar_icon = document.querySelectorAll('.side-bar-icon');
 let root_styleSheet = document.querySelector('#root-styleSheet');
-let header = document.querySelector('header');
+
+// app massage dom
+let copied_massage = document.querySelector('.copied-massage');
 let note_saved_massage = document.querySelector('.note-saved-massage');
 let unexpected_character = document.querySelector('.unexpected-character');
 let brwoser_doesnt_support = document.querySelector('.doesnt-support-on-firefox');
 let fill_input_error_massage = document.querySelector('.fill-input-error-massage');
 
+// get search box dom and childs
 let search_box_v = document.querySelector('.search-box');
 let search_input_v = document.querySelector('#search-input');
 let search_filter = document.querySelectorAll('.search-filter');
@@ -198,8 +51,6 @@ let set_timeout;
 let remove_interval;
 let input_;
 
-// place page html code in array
-let page_html_code_arr = [home_html_code, setting_html_code, saved_html_code, about_html_code];
 // todo part icon functions
 let added_toDo_icon_function_arr = [
     function save_note() {
@@ -343,51 +194,60 @@ setInterval(() => {
 }, 1);
 
 // set side bar icon event listeners
-for (let icon = 0; icon < side_bar_icon.length; icon++) {
-    side_bar_icon[icon].addEventListener('click', function side_bar_icon_function() {
+side_bar_icon.forEach((value, index)=>{
+    value.addEventListener('click', () => {
         let google_translate = document.querySelector('#translate');
-        side_bar_icon[0].classList.remove('side-bar-icon-border');
-        side_bar_icon[1].classList.remove('side-bar-icon-border');
-        side_bar_icon[2].classList.remove('side-bar-icon-border');
-        side_bar_icon[3].classList.remove('side-bar-icon-border');
-        side_bar_icon[icon].classList.add('side-bar-icon-border');
 
-        num_4 = icon;
+        side_bar_icon.forEach((value)=> {
+            value.classList.remove('side-bar-icon-border');
+        })
+        side_bar_icon[index].classList.add('side-bar-icon-border');
 
-        main_page_part.innerHTML = page_html_code_arr[icon];
+        num_4 = index;
 
-        get_page_data()
-        update_search_var();
-
-        if (icon == 0) {
-            ToDo_note_iconS_function();
-        }
-        if (icon == 1) {
-            font_size_check_box();
-            app_theme_function();
-            google_translate.classList.remove('display-none');
-            search_box_v.classList.remove('increase-width');
-            search_box_v.classList.remove('increase-width-mobile');
-            search_box_v.classList.remove('increase-width-tablet');
-            search_box_v.classList.remove('search-box-bg');
-        }
-        else if (icon == 2) {
-            if (L_S.getItem(`saved-note`) !== null)
-                document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
-            
-            get_page_data();
-            done_btn_function();
-            ToDo_note_iconS_function();
-        }
-        else if(icon==3) {
-            google_translate.classList.remove('display-none');
-            search_box_v.classList.remove('increase-width');
-            search_box_v.classList.remove('increase-width-mobile');
-            search_box_v.classList.remove('increase-width-tablet');
-            search_box_v.classList.remove('search-box-bg');
-        }
+        page_content_$html[index].then((data)=>{
+            main_page_part.innerHTML = data;
+        })
+        .then(()=>{
+            get_page_data()
+            update_search_var();
+    
+            switch (index) {
+                case 0: {
+                    ToDo_note_iconS_function();
+                    break;
+                }
+                case 1: {
+                    font_size_check_box();
+                    app_theme_function();
+                    google_translate.classList.remove('display-none');
+                    search_box_v.classList.remove('increase-width');
+                    search_box_v.classList.remove('increase-width-mobile');
+                    search_box_v.classList.remove('increase-width-tablet');
+                    search_box_v.classList.remove('search-box-bg');
+                    break;
+                }
+                case 2: {
+                    if (L_S.getItem(`saved-note`) !== null)
+                    document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
+                
+                    get_page_data();
+                    done_btn_function();
+                    ToDo_note_iconS_function();
+                    break;
+                }
+                default: {
+                    google_translate.classList.remove('display-none');
+                    search_box_v.classList.remove('increase-width');
+                    search_box_v.classList.remove('increase-width-mobile');
+                    search_box_v.classList.remove('increase-width-tablet');
+                    search_box_v.classList.remove('search-box-bg');
+                    break;
+                }
+            }
+        })
     });
-}
+})
 function set_page_data() {
     L_S.setItem(`html-page${num_4}`, main_page_part.innerHTML);
     L_S.setItem('app-theme', root_styleSheet.href);
