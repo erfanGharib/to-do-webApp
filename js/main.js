@@ -16,6 +16,7 @@ let main_page_part = document.querySelector('main');
 let center_page_part = document.querySelector('#center-part');
 let side_bar_icon = document.querySelectorAll('.side-bar-icon');
 let root_styleSheet = document.querySelector('#root-styleSheet');
+let brwoser_name = navigator.userAgent.includes('Firefox');
 
 // app massage dom
 let copied_massage = document.querySelector('.copied-massage');
@@ -60,7 +61,7 @@ let added_toDo_icon_function_arr = [
         let checked_uncheckd='';
         let none_flex='';
 
-        if ($input!==undefined && $input.parentElement.querySelector('div').style.display=='none') {
+        if (input_!==undefined && input_.parentElement.querySelector('div').style.display=='none') {
             checked_uncheckd = 'checked';
             none_flex = 'none';
         }
@@ -170,16 +171,6 @@ body_part.onload = () => {
     if (L_S.getItem(`saved-note`)!=null) {
         saved_toDo = L_S.getItem(`saved-note`);
     }
-}
-
-let change_font_size = ()=> {
-    remove_interval = setInterval(()=>{
-        let browser_screen_width = parseInt(screen.width);
-        let css_root = document.querySelector(':root');
-        if (browser_screen_width<=425) css_root.style.setProperty('--header-font-size', '13px')
-        else if (browser_screen_width<=768) css_root.style.setProperty('--header-font-size', '21px')
-        else  css_root.style.setProperty('--header-font-size', '17px')
-    },100)
 }
 
 setInterval(() => {
@@ -521,6 +512,15 @@ let increas_searchBox_width = () => {
         google_translate.classList.toggle('display-none');
     }
 }
+let change_font_size = ()=> {
+    remove_interval = setInterval(()=>{
+        let browser_screen_width = parseInt(screen.width);
+        let css_root = document.querySelector(':root');
+        if (browser_screen_width<=425) css_root.style.setProperty('--header-font-size', '13px')
+        else if (browser_screen_width<=768) css_root.style.setProperty('--header-font-size', '21px')
+        else  css_root.style.setProperty('--header-font-size', '17px')
+    },100)
+}
 
 // slider button function
 let slider_left_angle = () => {
@@ -554,7 +554,6 @@ let copy_to_clip_board = () => {
 // setting page app themes
 function app_theme_function() {
     let app_themes = document.querySelectorAll('.chose-theme-part-option');
-    let brwoser_name = navigator.userAgent.includes('Firefox');
 
     for (let theme = 0; theme < app_themes.length; theme++) {
         app_themes[theme].addEventListener('click', () => {
@@ -562,9 +561,9 @@ function app_theme_function() {
                 brwoser_doesnt_support.classList.remove('display');
 
             else {
-                app_themes[0].classList.remove('background');
-                app_themes[1].classList.remove('background');
-                app_themes[2].classList.remove('background');
+                app_themes.forEach((value)=>{
+                    value.classList.remove('background');
+                })
                 root_styleSheet.setAttribute('href', root_styleSheet_hrefs[theme]);
                 app_themes[theme].classList.add('background');
             }
