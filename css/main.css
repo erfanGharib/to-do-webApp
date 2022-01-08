@@ -18,20 +18,20 @@
 ::-ms-overflow-style {
     display: none;
 }
-.ToDo-note-check-box { 
-    display: none;
+
+@font-face {
+    font-family: montserrat;
+    src: url(../assets/fonts/Montserrat-Regular.ttf);
+    font-weight: 400;
 }
 @font-face {
     font-family: montserrat;
-    src: url(../fonts/Montserrat-Regular.ttf);
-}
-@font-face {
-    font-family: Montserrat;
-    src: url(../fonts/Montserrat-Light.ttf);
+    src: url(../assets/fonts/Montserrat-Light.ttf);
+    font-weight: 200;
 }
 @font-face {
     font-family: Iranian Sans;
-    src: url(../fonts/irsans_rasekhoon.ttf);
+    src: url(../assets/fonts/irsans_rasekhoon.ttf);
 }
 
 @keyframes translate {
@@ -43,26 +43,12 @@
     100% {transform: translateX(100%);}
 }
 
-.search-filter.background {
-    background: #22303d27;
-}
-.background {
-    background: #afafaf70;
-}
-
-.goog-logo-link,.goog-te-banner-frame, .goog-te-gadget>span {
-    display: none;
-}
-.goog-te-gadget {
-    color: rgba(180, 179, 179, 0) !important;
-}
 body {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     height: 100vh;
     width: 100%;
-    font-family: montserrat,iranian sans,arial;
     background: var(--body-background);
     background-size: cover;
     background-attachment: fixed;
@@ -81,9 +67,6 @@ header {
     align-items: center;
     justify-content: space-between;
     background: var(--header-background);
-    border-left: 4px solid var(--header-background);
-    position: relative;
-    right: 1px;
     z-index: 3;
 }
 #center-part {
@@ -105,22 +88,14 @@ main {
 }
 input, textarea {
     border-radius: 6px;
-    font-size: 18px;
-    outline: 0;
-    border:0;
-    font:400 18px montserrat,iranian sans,arial;
 }
 input::placeholder{
-    font-weight: 600;
     opacity: .5;
     color: var(--header-text-color);
 }
 textarea::placeholder{
     opacity: 1;
     color: var(--border-color);
-}
-h4,figcaption {
-    font-weight: 400;
 }
 span {
     display: flex;
@@ -129,11 +104,8 @@ span {
     font-size: 15px;
 }
 select {
-    background: none;
     padding: 5px;
     border-radius: 6px;
-    border: none;
-    outline: none;
     width: 200px;
     cursor: pointer;
     transition: .3s;
@@ -157,6 +129,38 @@ a {
 a:hover {
     text-decoration: underline;
 }
+input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+button, input, select, textarea, body, p, b, div, span, figcaption, input::placeholder {
+    background: none;
+    outline: none;
+    border: none;
+    font:400 18px montserrat,iranian sans,arial;
+    resize: none;
+}
+
+.ToDo-note-check-box { 
+    display: none;
+}
+
+.search-filter.background {
+    background: #22303d27;
+}
+.background {
+    background: #afafaf70;
+}
+
+.goog-logo-link,.goog-te-banner-frame, .goog-te-gadget>span {
+    display: none;
+}
+.goog-te-gadget {
+    color: rgba(180, 179, 179, 0) !important;
+}
+
 .display {
     animation: _translate .4s !important;
 }
@@ -183,13 +187,6 @@ a:hover {
     z-index: 4;
 }
 
-input[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
-input[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
-input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button,
-input[type="search"]::-webkit-search-results-button,
-input[type="search"]::-webkit-search-results-decoration { display: none; }
-
 .search-box {
     margin-right:25px;
     display: flex;
@@ -210,7 +207,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     width: 200px;
     min-width: 60px;
     height: 30px;
-    background: none;
     border-radius: 0 6px 6px 0;
     padding: 0 0 0 10px;
     color: var(--header-text-color);
@@ -237,7 +233,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     margin:2px 0 0 7px;
     width: 60px;
     border-radius: 4px;
-    background: none;
     border: 1px solid #22303d27;
     min-height: 25px;
     cursor: pointer;
@@ -261,6 +256,10 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     background: #fffefb;
     box-shadow: 0 8px 10px #21262b79; 
 }
+#not-found-text {
+    justify-content:center;
+    font-weight: 200 !important;
+}
 .search-sugestion-child,#not-found-text {
     min-height:43px;
     width: 90%;
@@ -278,7 +277,6 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
 }
 
 #translate {
-    font: 600 17px montserrat,iranian sans,arial;
     border-radius: 6px;
     color: var(--text-color);
     cursor: pointer;
@@ -287,16 +285,14 @@ input[type="search"]::-webkit-search-results-decoration { display: none; }
     align-items: center;
     transition: .5s;
     font-size: var(--header-font-size);
-    margin-left: 20px;
-    /* filter: invert() saturate(0%) brightness(100%) sepia(20%); */
-    
+    margin-left: 20px;    
 }
 .goog-text-highlight {
     background: none !important;
     box-shadow: none !important;
 }
 .goog-te-combo {
-    font: 600 var(--header-font-size) montserrat,iranian sans,arial !important;
+    font: 400 var(--header-font-size) montserrat,iranian sans,arial !important;
     color: var(--header-text-color);
 }
 h4 {
@@ -332,14 +328,11 @@ h4 {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
     border-radius: 6px;
     width:68%;
     min-height: 53px;
-    background: none;
     margin-top: 20px;
     padding:0 22px;
-    font: 600 19px montserrat,iranian sans,arial;
     cursor: pointer;
     transition: .25s;
     position: relative;
@@ -410,19 +403,19 @@ h4 {
     position: relative;
 }
 .slider-child-part.fourth {
-    background: url(../img/green-forest.jpg) 100% 65%;
+    background: url(../assets/image/green-forest.jpg) 100% 65%;
     background-size: cover;
 }
 .slider-child-part.second {
-    background: url(../img/laptop-table.jpg) 70% 20%;
+    background: url(../assets/image/laptop-table.jpg) 70% 20%;
     background-size: cover;
 }
 .slider-child-part.first {
-    background: url(../img/green-leafs.jpg) 100% 40%;
+    background: url(../assets/image/green-leafs.jpg) 100% 40%;
     background-size: cover;
 }
 .slider-child-part.third {
-    background: url(../img/plant.jpg) 100% 50%;
+    background: url(../assets/image/plant.jpg) 100% 50%;
     background-size: cover;
 }
 /* home page add todo note part */
@@ -486,12 +479,10 @@ h4 {
     resize: none;
     margin: 7px;
     border-radius: 6px 6px 0 0;
-    font: 600 18px montserrat, iranian sans, arial;
     scrollbar-width: none;
     height: 46px;
     padding: 7px 10px;
     letter-spacing: 1px;
-    background: none;
     width: 89%;
 }
 .make-changes-to-p-note {
@@ -503,7 +494,6 @@ h4 {
     font-size: 17px;
     color: var(--header-text-color);
     background: var(--light-green);
-    font: 600 16px montserrat, iranian sans, arial;
 }
 .make-changes-to-p-note:hover {
     background: var(--light-green-hover);
@@ -704,7 +694,6 @@ h4 {
     justify-content: space-between;
     height: 22px;
     width: 340px;
-    margin-left: 20px;
 }
 #copy-link-inp {
     border: none;
@@ -799,12 +788,16 @@ strong,p {
     justify-content: space-between;
 }
 #set-font-size-part>span {
-    font-size: 17px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     align-items: center;
-    margin-left: 30px;
+}
+#set-font-size-part>h3 {
+    margin-bottom: 13px;
+}
+#set-font-size-part>span>h4 {
+    font-weight: 200;
 }
 #set-font-size-part>span>div>input {
     position: relative;
@@ -819,7 +812,7 @@ strong,p {
     align-items: center;
 }
 .chose-theme-part-option {
-    margin: 20px -15px 0 30px;
+    margin: 20px 12px 0 0;
     padding: 7px;
     border-radius: 6px;
     font-size: 17px;
@@ -839,7 +832,7 @@ strong,p {
     border: 2px solid var(--header-background);
     height: 37px;
     width: 80px;
-    font-size: 18px;
+    font-size: 16px;
     color: var(--delete-btn-color);
     transition: .25s;
     margin-top: 20px;
@@ -915,4 +908,18 @@ strong,p {
         justify-content: center;
         width: 85%;
     }
+}
+
+#about-page-p1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#about-page-p1>span {
+    margin-bottom: 5px;
+    font-weight: 200;
+}
+#copy-right {
+    font:200 17px montserrat,iranian sans,arial;
 }

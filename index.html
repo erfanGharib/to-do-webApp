@@ -7,27 +7,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- theme -->
-    <link rel="stylesheet" type="text/css" id="root-styleSheet" href="css/light-theme-root.css">
+    <link rel="stylesheet" type="text/css" id="root-styleSheet" href="./css/light-theme-root.css">
     <!-- styles -->
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" media="(max-width:768px)" href="../css/tablet-layeout.css">
-    <link rel="stylesheet" type="text/css" media="(max-width:425px)" href="../css/mobile-layeout.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link rel="stylesheet" type="text/css" media="(max-width:768px)" href="./css/tablet-layeout.css">
+    <link rel="stylesheet" type="text/css" media="(max-width:425px)" href="./css/mobile-layeout.css">
     <!-- icons -->
-    <link rel="stylesheet" type="text/css" href="../css/icons.css">
+    <link rel="stylesheet" type="text/css" href="./css/icons.css">
     <!-- favicon -->
-    <link rel="icon" href="../assets/favicon/logo.svg">
+    <link rel="icon" href="./assets/favicon/logo.svg">
 
     <title>To-Do App</title>
 </head>
 
 <body>
+    <img src="./css/glassmorphism-theme-root.css" alt="">
     <div id="left-side-bar">
         <i class="app-logo"></i>
         <div>
-            <button class="side-bar-icon side-bar-icon-border"><i class="fi-rr-home"></i>Home</button>
-            <button class="side-bar-icon"><i class="fi-rr-settings"></i>Setting</button>
-            <button class="side-bar-icon"><i style="min-width: 23px;min-height: 23px;" class="fi-rr-bookmark-sidebar"></i>Saved</button>
-            <button class="side-bar-icon"><i class="fi-rr-info"></i>About</button>
+            <button class="side-bar-icon side-bar-icon-border"><i class="fi-rr-home side-bar-ico"></i>Home</button>
+            <button class="side-bar-icon"><i class="fi-rr-settings side-bar-ico"></i>Setting</button>
+            <button class="side-bar-icon"><i class="fi-rr-bookmark-sidebar side-bar-ico"></i>Saved</button>
+            <button class="side-bar-icon"><i class="fi-rr-info side-bar-ico"></i>About</button>
         </div>
     </div>
 
@@ -54,7 +55,7 @@
                 </div>
 
                 <span id="search-sugestion" class="skiptranslate">
-                    <span id="not-found-text" style="justify-content:center;"><b>not found</b></span>
+                    <span id="not-found-text"><b>not found</b></span>
                 </span>
             </div>
         </header>
@@ -68,7 +69,7 @@
 
                 <div id="slider">
                     <button class="slider-btn" onclick="slider_left_angle()"><i class="fi-rr-angle-small-left"></i></button>
-                    <button class="slider-btn" style="box-shadow: -3px 0 10px #22303d1f;margin-left: auto;" onclick="slider_right_angle()"><i class="fi-rr-angle-small-right"></i></button>
+                    <button class="slider-btn second" onclick="slider_right_angle()"><i class="fi-rr-angle-small-right"></i></button>
                     <span id="slider-child" style="left: 0;">
                         <span class="slider-child-part fourth"></span>
                         <span class="slider-child-part third"></span>
@@ -89,7 +90,7 @@
     </div>
 
     <div class="unexpected-character app-massage display">
-        <i class="fi-rr-x-icon" style="margin-top:0;"></i> <p>Unexpected Characters "<",">"</p>
+        <i class="fi-rr-x-icon" style="margin-top:0;"></i> <p>Unexpected Characters "<", ">"</p>
     </div>
 
     <div class="copied-massage app-massage display"> 
@@ -119,6 +120,6 @@
     </div>
 </body>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script type="text/javascript" src="../js/main.js"></script>
+<script type="text/javascript" defer src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<script type="text/javascript" defer src="./js/main.js"></script>
 </html>

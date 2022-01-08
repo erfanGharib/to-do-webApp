@@ -6,7 +6,7 @@
     --hover-color:#eeeeee44;
     --massage-back:#eeeeee;
     --delete-btn-color:#22303d;
-    --body-background:url(../img/glassmorphism-bg.svg);
+    --body-background:url(../assets/image/glassmorphism-bg.svg);
     --selection-bg:#f6f6f6;
     --selection-color:#22303d;
     --light-green:#22e98c;
@@ -35,7 +35,7 @@ textarea::placeholder {
     filter: invert(0) !important;
 }
 .app-logo {
-    background: url(../img/full-logo-glassmorphism.svg) no-repeat;
+    background: url(../assets/icons/full-logo-glassmorphism.svg) no-repeat;
     width: 140px;
     height: 45px;
     filter: none;
@@ -46,14 +46,14 @@ textarea::placeholder {
 
 @media (max-width:768px) {
     .app-logo {
-        background: url(../img/logo-glassmorphism.svg) no-repeat !important;
+        background: url(../assets/icons/logo-glassmorphism.svg) no-repeat !important;
         margin-left: 6px;
         width: 57px !important;
     }
 }
 @media (max-width:425px) {
     .app-logo {
-        background: url(../img/logo-glassmorphism.svg) no-repeat !important;
+        background: url(../assets/icons/logo-glassmorphism.svg) no-repeat !important;
         margin-left: 6px;
         width: 40px !important;
         margin-top: 45px !important;

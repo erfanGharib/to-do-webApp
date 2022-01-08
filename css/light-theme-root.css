@@ -16,7 +16,7 @@
     --light-green-hover:#2acc80;
 }
 .app-logo {
-    background: url(../img/full-logo.svg) no-repeat;
+    background: url(../assets/icons/full-logo.svg) no-repeat;
     width: 140px;
     height: 45px;
     filter: none;
@@ -24,14 +24,14 @@
 
 @media (max-width:768px) {
     .app-logo {
-        background: url(../img/logo.svg) no-repeat !important;
+        background: url(../assets/favicon/logo.svg) no-repeat !important;
         margin-left: 6px;
         width: 57px !important;
     }
 }
 @media (max-width:425px) {
     .app-logo {
-        background: url(../img/logo.svg) no-repeat !important;
+        background: url(../assets/favicon/logo.svg) no-repeat !important;
         margin-left: 6px;
         width: 40px !important;
         margin-top: 45px !important;
