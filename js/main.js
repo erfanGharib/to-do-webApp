@@ -1,6 +1,12 @@
 var saved_toDo = '';
 
 // pages html code variables
+let page_content_$html = [
+    fetch('./components/home-page/home.html').then(res=>res.text()),
+    fetch('./components/about-page/about.html').then(res=>res.text()),
+    fetch('./components/about-page/about.html').then(res=>res.text()),
+    fetch('./components/setting-page/setting.html').then(res=>res.text())
+]
 let home_html_code = `
 <main>
     <span id="main-top-part-add-ToDo">
@@ -98,17 +104,17 @@ let setting_html_code = `
     <h3 style="grid-area:headline;">App Themes</h3>
     <div>
         <figure style="grid-area:default;" class="chose-theme-part-option background">
-            <img src="img/light.svg" height="95px" alt="Default theme preview">
+            <img src="./assets/image/light.svg" height="95px" alt="Default theme preview">
             <figcaption>Light</figcaption>
         </figure>
 
         <figure style="grid-area:dark;" class="chose-theme-part-option">
-            <img src="img/dark.svg" height="95px" alt="Dark theme preview">
+            <img src="./assets/image/dark.svg" height="95px" alt="Dark theme preview">
             <figcaption>Dark</figcaption>
         </figure>
 
         <figure style="grid-area:neomorphism;font-size:22px;" class="chose-theme-part-option">
-            <img src="img/glassmorphism.svg" height="95px" alt="Neomorphism theme preview">
+            <img src="./assets/image/glassmorphism.svg" height="95px" alt="Neomorphism theme preview">
             <figcaption>Glassmorphism</figcaption>
         </figure>
     </div>
@@ -132,19 +138,23 @@ let saved_html_code = `
 let about_html_code = `
 <span id="about-page-text">
 <span class="about-page-part">
-    <strong style="margin-bottom:5px">Connect With Me :</strong>
-    <p>   Email: <a href=mailto:erfangharib5@gmail.com?subject='subject text'>erfangharib5@gmail.com</a></p>
-    <p>   Instagram: <a href="https://www.instagram.com/___erfan_gh___/">@___erfan_gh___</a></p>
-    <p>   Telegram: <a href="https://t.me/ERFAN_web_dev">@ERFAN_web_dev</a></p></br>
+    <div id="about-page-p1"> 
+        <p style="margin-bottom:10px">Connect With Me :</p>
+        <span>Email: <a href=mailto:erfangharib5@gmail.com?subject='subject text'>erfangharib5@gmail.com</a></span>
+        <span>Instagram: <a href="https://www.instagram.com/___erfan_gh___/">@___erfan_gh___</a></span>
+        <span>Telegram: <a href="https://t.me/ERFAN_web_dev">@ERFAN_web_dev</a></span>
+    </div>
 
-    <strong style="margin:20px 0 13px 0;">Share App Link With Friends :</strong>
-    <div id="copy-link-box">
-        <input type="text" value="${window.location.href}" id="copy-link-inp" readonly/>
-        <button id="copy-link-btn" title="copy" onclick="copy_to_clip_board()"><i class="fi-rr-copy-alt"></i></button>
+    <div>
+        <p style="margin:20px 0 13px 0;">Share App Link With Friends :</p>
+        <div id="copy-link-box">
+            <input type="text" value="${window.location.href}" id="copy-link-inp" readonly/>
+            <button id="copy-link-btn" title="copy" onclick="copy_to_clip_board()"><i class="fi-rr-copy-alt"></i></button>
+        </div>
     </div>
 </span>
 
-<p>Developed and Designed by Erfan Gharib <br>All right reserved ©2021-2022</p>
+<p id="copy-right">Developed and Designed by Erfan Gharib <br>All Rights Reserved ©2021-2022</p>
 </span>`;
 
 // other app variables
@@ -295,9 +305,9 @@ let pc_font_sizes = [
 ]
 
 let root_styleSheet_hrefs = [
-    'css/light-theme-root.css',
-    'css/dark-theme-root.css',
-    'css/glassmorphism-theme-root.css'
+    '../css/light-theme-root.css',
+    '../css/dark-theme-root.css',
+    '../css/glassmorphism-theme-root.css'
 ]
 
 body_part.onload = () => {
