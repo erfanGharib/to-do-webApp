@@ -49,9 +49,9 @@ body {
     justify-content: flex-start;
     height: 100vh;
     width: 100%;
-    background: var(--body-background);
-    background-size: cover;
-    background-attachment: fixed;
+    background: var(--body-background) !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -378,7 +378,7 @@ h4 {
 }
 .slider-btn.second {
     box-shadow: -3px 0 10px #22303d1f;
-    position: absolute;
+    margin-left: auto;
 }
 .slider-btn:hover {
     background: #22303d98;
@@ -450,12 +450,12 @@ h4 {
     transition: .5s;
     z-index: 3;
     animation:translate .5s forwards alternate;
-    background: rgba(235, 235, 235, 0.87);
-    color: var(--header-text-color);
+    background: var(--massage-back);
+    color: var(--border-color);
     padding:10px;
     right: 0;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     bottom: 30px;
     border-radius: 6px 0 0 6px;
     position: absolute;
@@ -464,7 +464,6 @@ h4 {
 }
 .app-massage>p {
     font-size: 17px !important;
-    margin-top: 3px;
 }
 
 .edit-p-note-textarea {
@@ -806,6 +805,7 @@ strong,p {
     align-items: center;
 }
 .chose-theme-part-option {
+    text-align: center;
     margin: 20px 12px 0 0;
     padding: 7px;
     border-radius: 6px;
