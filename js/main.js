@@ -2,10 +2,10 @@ var saved_toDo = '';
 
 // pages html code variables
 const page_content_$html = [
-    fetch('./components/home.html').then(res=>res.text()),
-    fetch('./components/setting.html').then(res=>res.text()),
-    fetch('./components/saved-note.html').then(res=>res.text()),
-    fetch('./components/about.html').then(res=>res.text()),
+    fetch('./components/home.html').then(res => res.text()),
+    fetch('./components/setting.html').then(res => res.text()),
+    fetch('./components/saved-note.html').then(res => res.text()),
+    fetch('./components/about.html').then(res => res.text()),
 ];
 
 let notif_sound = new Audio('../sounds/Windows Battery Low.wav');
@@ -59,10 +59,10 @@ let added_toDo_icon_function_arr = [
         let p_note = this_.parentElement.parentElement.firstElementChild.innerHTML;
         let created_date = this_.parentElement.querySelector('b').innerHTML;
 
-        let checked_uncheckd='';
-        let none_flex='';
+        let checked_uncheckd = '';
+        let none_flex = '';
 
-        if (input_!==undefined && input_.parentElement.querySelector('div').style.display=='none') {
+        if (input_ !== undefined && input_.parentElement.querySelector('div').style.display == 'none') {
             checked_uncheckd = 'checked';
             none_flex = 'none';
         }
@@ -114,28 +114,31 @@ let added_toDo_icon_function_arr = [
         let search_sugestion_child = document.querySelectorAll('.search-sugestion-child');
 
         num_2 -= 1;
-        this_.parentElement.parentElement.remove();
+        this_.parentElement.parentElement.classList.remove('add-note-animate');
+        setTimeout(() => {
+            this_.parentElement.parentElement.remove();
 
-        for(let n=0;n<search_sugestion_child.length;n++) {
-            let b = this_.parentElement.parentElement.firstElementChild.innerHTML.length;
-            if (search_sugestion_child[n].firstElementChild.innerHTML.substring(0,b)===this_.parentElement.parentElement.firstElementChild.innerHTML) {
-                search_sugestion_child[n].remove();
+            for (let n = 0; n < search_sugestion_child.length; n++) {
+                let b = this_.parentElement.parentElement.firstElementChild.innerHTML.length;
+                if (search_sugestion_child[n].firstElementChild.innerHTML.substring(0, b) === this_.parentElement.parentElement.firstElementChild.innerHTML) {
+                    search_sugestion_child[n].remove();
+                }
             }
-        }
 
-        ToDo_note_part = document.querySelectorAll('.ToDo-note-part');
+            ToDo_note_part = document.querySelectorAll('.ToDo-note-part');
 
-        if (ToDo_note_part.length == 0 && side_bar_icon[2].classList.contains('side-bar-icon-border') !== true) {
-            no_added_toDo_text.style.display = "flex";
-            not_found_text.style.display = 'flex';
-        }
+            if (ToDo_note_part.length == 0 && side_bar_icon[2].classList.contains('side-bar-icon-border') !== true) {
+                no_added_toDo_text.style.display = "flex";
+                not_found_text.style.display = 'flex';
+            }
 
-        if (num_4 === 2) {
-            saved_toDo = document.querySelector('#saved-to-do-grid').innerHTML;
-            L_S.setItem(`saved-note`, saved_toDo);
-        }
-
-        set_page_data();
+            if (num_4 === 2) {
+                saved_toDo = document.querySelector('#saved-to-do-grid').innerHTML;
+                L_S.setItem(`saved-note`, saved_toDo);
+            }
+            
+            set_page_data();
+        }, 200);
     }
 ]
 let setting_page_font_size_var_property = [
@@ -170,7 +173,7 @@ body_part.onload = () => {
     ToDo_note_iconS_function();
     change_font_size();
     done_btn_function();
-    if (L_S.getItem(`saved-note`)!=null) {
+    if (L_S.getItem(`saved-note`) != null) {
         saved_toDo = L_S.getItem(`saved-note`);
     }
 }
@@ -178,68 +181,68 @@ body_part.onload = () => {
 setInterval(() => {
     document.body.style.top = 0;
     document.body.style.position = 'fixed';
-    if(document.querySelector('#goog-gt-tt')!=null) {
-        document.querySelector('#goog-gt-tt').style.display="none";
+    if (document.querySelector('#goog-gt-tt') != null) {
+        document.querySelector('#goog-gt-tt').style.display = "none";
     }
 
-    if (num_4===1||num_4===3) search_box_v.style.display='none';
-    else if(num_4===0||num_4===2) search_box_v.style.display='flex';
+    if (num_4 === 1 || num_4 === 3) search_box_v.style.display = 'none';
+    else if (num_4 === 0 || num_4 === 2) search_box_v.style.display = 'flex';
 }, 1);
 
 // set side bar icon event listeners
-side_bar_icon.forEach((value, index)=>{
+side_bar_icon.forEach((value, index) => {
     value.addEventListener('click', () => {
         let google_translate = document.querySelector('#translate');
 
-        side_bar_icon.forEach((value)=> {
+        side_bar_icon.forEach((value) => {
             value.classList.remove('side-bar-icon-border');
         })
         side_bar_icon[index].classList.add('side-bar-icon-border');
 
         num_4 = index;
 
-        page_content_$html[index].then((data)=>{
+        page_content_$html[index].then((data) => {
             main_page_part.innerHTML = data;
         })
-        .then(()=>{
-            get_page_data()
-            update_search_var();
-    
-            switch (index) {
-                case 0: {
-                    ToDo_note_iconS_function();
-                    break;
+            .then(() => {
+                get_page_data()
+                update_search_var();
+
+                switch (index) {
+                    case 0: {
+                        ToDo_note_iconS_function();
+                        break;
+                    }
+                    case 1: {
+                        font_size_check_box();
+                        app_theme_function();
+                        google_translate.classList.remove('display-none');
+                        search_box_v.classList.remove('increase-width');
+                        search_box_v.classList.remove('increase-width-mobile');
+                        search_box_v.classList.remove('increase-width-tablet');
+                        search_box_v.classList.remove('search-box-bg');
+                        break;
+                    }
+                    case 2: {
+                        if (L_S.getItem(`saved-note`) !== null)
+                            document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
+
+                        get_page_data();
+                        done_btn_function();
+                        ToDo_note_iconS_function();
+                        break;
+                    }
+                    default: {
+                        google_translate.classList.remove('display-none');
+                        search_box_v.classList.remove('increase-width');
+                        search_box_v.classList.remove('increase-width-mobile');
+                        search_box_v.classList.remove('increase-width-tablet');
+                        search_box_v.classList.remove('search-box-bg');
+                        document.querySelector('#copy-link-inp').value = window.location.href;
+                        break;
+                    }
                 }
-                case 1: {
-                    font_size_check_box();
-                    app_theme_function();
-                    google_translate.classList.remove('display-none');
-                    search_box_v.classList.remove('increase-width');
-                    search_box_v.classList.remove('increase-width-mobile');
-                    search_box_v.classList.remove('increase-width-tablet');
-                    search_box_v.classList.remove('search-box-bg');
-                    break;
-                }
-                case 2: {
-                    if (L_S.getItem(`saved-note`) !== null)
-                    document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
-                
-                    get_page_data();
-                    done_btn_function();
-                    ToDo_note_iconS_function();
-                    break;
-                }
-                default: {
-                    google_translate.classList.remove('display-none');
-                    search_box_v.classList.remove('increase-width');
-                    search_box_v.classList.remove('increase-width-mobile');
-                    search_box_v.classList.remove('increase-width-tablet');
-                    search_box_v.classList.remove('search-box-bg');
-                    document.querySelector('#copy-link-inp').value=window.location.href;
-                    break;
-                }
-            }
-        })
+            })
     });
 })
 function set_page_data() {
@@ -264,14 +267,14 @@ function get_page_data() {
     }
     switch (num_4) {
         case 0: case undefined:
-            search_sugestion.innerHTML=L_S.getItem('search-suggestion-home')
+            search_sugestion.innerHTML = L_S.getItem('search-suggestion-home')
             break;
-            
+
         case 2:
-            search_sugestion.innerHTML=L_S.getItem('search-suggestion-saved')
+            search_sugestion.innerHTML = L_S.getItem('search-suggestion-saved')
             break;
     }
-    if(L_S.getItem('app-theme')!=null)
+    if (L_S.getItem('app-theme') != null)
         root_styleSheet.setAttribute('href', L_S.getItem('app-theme'));
 }
 
@@ -289,9 +292,9 @@ function done_btn_function() {
             let created_date = document.querySelectorAll('.created-date')[done_button].innerHTML;
             let make_changes_to_p_note = document.querySelectorAll('.make-changes-to-p-note');
             let make_changes_to_p_note_textArea = make_changes_to_p_note[done_button].parentElement.firstElementChild.value;
-            
-            document.querySelectorAll('.search-sugestion-child')[num_6].firstElementChild.innerHTML=make_changes_to_p_note_textArea+'...';
-            
+
+            document.querySelectorAll('.search-sugestion-child')[num_6].firstElementChild.innerHTML = make_changes_to_p_note_textArea + '...';
+
             make_changes_to_p_note[done_button].parentElement.innerHTML = `
             <p class="p-note skiptranslate">${make_changes_to_p_note_textArea}</p>
             <span id="ToDo-note-icon-part">
@@ -332,22 +335,22 @@ function create_todo__show_popUp() {
     let no_added_toDo_text = document.querySelector('#no-added-toDo-text');
     let main_bottom_part_added_note = document.querySelector('#main-bottom-part-added-note');
 
-    if (add_toDo_note_input.value !== '' && add_toDo_note_input.value.includes('<','>')===false) {
-        if (not_found_text===null||not_found_text===undefined) {
-            search_sugestion.innerHTML+=`<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`;
+    if (add_toDo_note_input.value !== '' && add_toDo_note_input.value.includes('<', '>') === false) {
+        if (not_found_text === null || not_found_text === undefined) {
+            search_sugestion.innerHTML += `<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`;
         }
         not_found_text = document.querySelector('#not-found-text');
 
         num_2 += 1;
         not_found_text.style.display = 'none';
 
-        let search_inp_subString = `${add_toDo_note_input.value.substring(0,20)}...`;
-        let insert_zero_before_day = _date.getDate()<10 ? '0'+_date.getDate() : _date.getDate();
-        let insert_zero_before_month = _date.getMonth()<10 ? '0'+(_date.getMonth()+1) : (_date.getMonth()+1);
+        let search_inp_subString = `${add_toDo_note_input.value.substring(0, 20)}...`;
+        let insert_zero_before_day = _date.getDate() < 10 ? '0' + _date.getDate() : _date.getDate();
+        let insert_zero_before_month = _date.getMonth() < 10 ? '0' + (_date.getMonth() + 1) : (_date.getMonth() + 1);
 
         search_sugestion.innerHTML += `<span class="search-sugestion-child display-none"><b>${search_inp_subString}</b> <b id="date-">${_date.getFullYear()}-${insert_zero_before_month}-${insert_zero_before_day}</b></span>`;
         no_added_toDo_text.style.display = "none";
-        main_bottom_part_added_note.innerHTML += `<div class="ToDo-note-part skiptranslate">
+        main_bottom_part_added_note.innerHTML += `<div class=" add-note-animate ToDo-note-part skiptranslate">
             <p class="p-note">${add_toDo_note_input.value}</p>
             <span id="ToDo-note-icon-part">
                 <label class="checkBox-label" onclick="ToDo_note_checkBox(this)">
@@ -370,7 +373,7 @@ function create_todo__show_popUp() {
         fill_input_error_massage.classList.remove('display');
         notif_sound.play();
     }
-    else if (add_toDo_note_input.value.includes('<','>')) {
+    else if (add_toDo_note_input.value.includes('<', '>')) {
         unexpected_character.classList.remove('display')
         notif_sound.play();
     }
@@ -385,7 +388,7 @@ function ToDo_note_iconS_eventListener_function() {
     var this_str = String(this);
     this_ = this;
 
-    num_6=ToDo_note_part_arr.indexOf(this.parentElement.parentElement);
+    num_6 = ToDo_note_part_arr.indexOf(this.parentElement.parentElement);
 
     if (this_str === `[object HTMLSpanElement]`)
         added_toDo_icon_function_arr[2]();
@@ -403,13 +406,13 @@ function ToDo_note_iconS_function() {
     }
 }
 function ToDo_note_checkBox(input) {
-    input_ = input; 
+    input_ = input;
     input_.firstElementChild.setAttribute('checked', 'checked');
-    input_.firstElementChild.checked=true;
+    input_.firstElementChild.checked = true;
 
-    input_.parentElement.querySelector('div').style.display='none';
+    input_.parentElement.querySelector('div').style.display = 'none';
 
-    if (num_4==2) {
+    if (num_4 == 2) {
         L_S.setItem('saved-note', document.querySelector('#saved-to-do-grid').innerHTML);
     }
     set_page_data();
@@ -424,8 +427,8 @@ function search_box() {
 
     update_search_var();
 
-    if(not_found_text===null || not_found_text===undefined)
-        search_sugestion.innerHTML+=`<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`
+    if (not_found_text === null || not_found_text === undefined)
+        search_sugestion.innerHTML += `<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`
     not_found_text = document.querySelector('#not-found-text');
 
     ToDo_note_part.length = 0 ? search_sugestion.style.display = 'flex' : search_sugestion.style.display = 'none';
@@ -440,34 +443,34 @@ function search_box() {
     }
 
     for (let S_S_C_num = 0; S_S_C_num < ToDo_note_part.length; S_S_C_num++) {
-        if(num_4===2) {
+        if (num_4 === 2) {
             search_sugestion.innerHTML += `<span class="search-sugestion-child display-none"><b>${p_note[S_S_C_num].innerHTML}</b> <b id="date-">${created_date[S_S_C_num].innerHTML}</b></span>`;
-            if(not_found_text===null || not_found_text===undefined)
-                search_sugestion.innerHTML+=`<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`
+            if (not_found_text === null || not_found_text === undefined)
+                search_sugestion.innerHTML += `<span id="not-found-text" style="justify-content:center;"><b>not found</b></span>`
         }
 
         search_sugestion_child = document.querySelectorAll('.search-sugestion-child');
         not_found_text = document.querySelector('#not-found-text');
 
-        search_sugestion_child[S_S_C_num].addEventListener('click', ()=>{
+        search_sugestion_child[S_S_C_num].addEventListener('click', () => {
             ToDo_note_part[S_S_C_num].scrollIntoView();
             ToDo_note_part[S_S_C_num].classList.add('background');
             search_sugestion.style.display = 'none';
             search_box_v.classList.remove('search-box-bg');
             search_input_v.blur();
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 ToDo_note_part[S_S_C_num].classList.remove('background');
-            },2500)
+            }, 2500)
         })
 
         search_sugestion_child[S_S_C_num].classList.add('display-none');
-    
-        if (search_filter[1].classList.contains('background') && p_note[S_S_C_num]!==undefined && p_note[S_S_C_num].innerHTML.includes(search_input_v.value)===true) {
+
+        if (search_filter[1].classList.contains('background') && p_note[S_S_C_num] !== undefined && p_note[S_S_C_num].innerHTML.includes(search_input_v.value) === true) {
             not_found_text.style.display = 'none';
             search_sugestion_child[S_S_C_num].classList.remove('display-none');
         }
-        else if (search_filter[0].classList.contains('background') && p_note[S_S_C_num]!==undefined && search_sugestion_child[S_S_C_num].querySelectorAll('b')[1].innerHTML === search_input_v.value) {
+        else if (search_filter[0].classList.contains('background') && p_note[S_S_C_num] !== undefined && search_sugestion_child[S_S_C_num].querySelectorAll('b')[1].innerHTML === search_input_v.value) {
             not_found_text.style.display = 'none';
             search_sugestion_child[S_S_C_num].classList.remove('display-none');
         }
@@ -475,14 +478,14 @@ function search_box() {
 }
 function search_box_mouseleave() {
     let google_translate = document.querySelector('#translate');
-    set_timeout = setTimeout(()=>{
+    set_timeout = setTimeout(() => {
         search_sugestion.style.display = 'none';
         search_box_v.classList.remove('search-box-bg');
         search_box_v.classList.remove('increase-width-mobile');
         search_box_v.classList.remove('increase-width');
         google_translate.classList.toggle('display-none');
         search_input_v.blur();
-    },2500)
+    }, 2500)
 }
 function clear_timeout() {
     clearTimeout(set_timeout);
@@ -510,14 +513,14 @@ let increas_searchBox_width = () => {
         google_translate.classList.toggle('display-none');
     }
 }
-let change_font_size = ()=> {
-    remove_interval = setInterval(()=>{
+let change_font_size = () => {
+    remove_interval = setInterval(() => {
         let browser_screen_width = parseInt(screen.width);
         let css_root = document.querySelector(':root');
-        if (browser_screen_width<=425) css_root.style.setProperty('--header-font-size', '13px')
-        else if (browser_screen_width<=768) css_root.style.setProperty('--header-font-size', '21px')
-        else  css_root.style.setProperty('--header-font-size', '17px')
-    },100)
+        if (browser_screen_width <= 425) css_root.style.setProperty('--header-font-size', '13px')
+        else if (browser_screen_width <= 768) css_root.style.setProperty('--header-font-size', '21px')
+        else css_root.style.setProperty('--header-font-size', '17px')
+    }, 100)
 }
 
 // slider button function
@@ -555,7 +558,7 @@ function app_theme_function() {
             }
 
             else {
-                app_themes.forEach((value)=>{
+                app_themes.forEach((value) => {
                     value.classList.remove('background');
                 })
                 root_styleSheet.setAttribute('href', root_styleSheet_hrefs[theme]);
@@ -580,8 +583,8 @@ function font_size_check_box() {
 
     let css_root = document.querySelector(':root');
 
-    browser_screen_width <= 768 ? setting_page_font_size_var_property=['21px', '23px', '25px'] : setting_page_font_size_var_property=['17px', '19px', '21px'];
-    browser_screen_width <= 425 ? setting_page_font_size_var_property=['13px', '15px', '17px'] : setting_page_font_size_var_property=['17px', '19px', '21px'];
+    browser_screen_width <= 768 ? setting_page_font_size_var_property = ['21px', '23px', '25px'] : setting_page_font_size_var_property = ['17px', '19px', '21px'];
+    browser_screen_width <= 425 ? setting_page_font_size_var_property = ['13px', '15px', '17px'] : setting_page_font_size_var_property = ['17px', '19px', '21px'];
 
     for (let font_sizes = 0; font_sizes < font_sizes_text.length; font_sizes++) {
         if (browser_screen_width <= 768)

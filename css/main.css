@@ -615,7 +615,9 @@ h4 {
     align-items: flex-start;
     justify-content: space-between;
     flex-direction: column;
-    transition: .1s ease;
+    transition: .2s ease;
+    transform: scale(0.9);
+    opacity: 0;
 }
 .ToDo-note-part>span>span,
 .ToDo-note-part>span>div,
@@ -916,4 +918,9 @@ strong,p {
 }
 #copy-right {
     font:200 17px montserrat,iranian sans,arial;
+}
+
+.add-note-animate {
+    transform: scale(1);
+    opacity: 1;
 }
