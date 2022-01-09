@@ -8,6 +8,7 @@ const page_content_$html = [
     fetch('./components/about.html').then(res=>res.text()),
 ];
 
+let notif_sound = new Audio('../sounds/Windows Battery Low.wav');
 let _date = new Date;
 let L_S = localStorage;
 let body_part = document.body;
@@ -84,6 +85,7 @@ let added_toDo_icon_function_arr = [
         L_S.setItem('saved-note', saved_toDo);
 
         note_saved_massage.classList.remove('display');
+        notif_sound.play();
 
         setTimeout(() => {
             note_saved_massage.classList.add('display');
@@ -233,6 +235,7 @@ side_bar_icon.forEach((value, index)=>{
                     search_box_v.classList.remove('increase-width-mobile');
                     search_box_v.classList.remove('increase-width-tablet');
                     search_box_v.classList.remove('search-box-bg');
+                    document.querySelector('#copy-link-inp').value=window.location.href;
                     break;
                 }
             }
@@ -365,9 +368,11 @@ function create_todo__show_popUp() {
     }
     else if (add_toDo_note_input.value === '') {
         fill_input_error_massage.classList.remove('display');
+        notif_sound.play();
     }
     else if (add_toDo_note_input.value.includes('<','>')) {
         unexpected_character.classList.remove('display')
+        notif_sound.play();
     }
     setTimeout(() => {
         fill_input_error_massage.classList.add('display');
@@ -468,9 +473,6 @@ function search_box() {
         }
     }
 }
-function search_input() {
-    search_box_v.classList.add('search-box-bg');
-}
 function search_box_mouseleave() {
     let google_translate = document.querySelector('#translate');
     set_timeout = setTimeout(()=>{
@@ -485,22 +487,18 @@ function search_box_mouseleave() {
 function clear_timeout() {
     clearTimeout(set_timeout);
 }
-let search_text_filter = () => {
-    search_filter[1].classList.add('background');
-    search_filter[0].classList.remove('background');
-    search_input_v.setAttribute('type', 'text')
-    search_input_v.value = ''
+let search_filter_$func = (bg_rm, bg_add) => {
+    search_filter[bg_add].classList.add('background');
+    search_filter[bg_rm].classList.remove('background');
+    let search_filter_type = ['text', 'date'];
+    search_input_v.setAttribute('type', search_filter_type[bg_rm]);
     set_page_data();
 }
-let search_date_filter = () => {
-    search_filter[0].classList.add('background');
-    search_filter[1].classList.remove('background');
-    search_input_v.setAttribute('type', 'date')
-    set_page_data();
-}
+
 let increas_searchBox_width = () => {
     let google_translate = document.querySelector('#translate');
     let browser_screen_width = parseInt(screen.width);
+
     if (browser_screen_width <= 768 && browser_screen_width > 425) {
         search_box_v.classList.toggle('increase-width');
         search_box_v.classList.toggle('search-box-bg');
@@ -523,17 +521,10 @@ let change_font_size = ()=> {
 }
 
 // slider button function
-let slider_left_angle = () => {
+let slider_angle = (dir, mov) => {
     let slider_child = document.querySelector('#slider-child').style;
-    if (slider_child.left !== '0%') {
-        num += 100;
-        slider_child.left = num + '%';
-    }
-}
-let slider_right_angle = () => {
-    let slider_child = document.querySelector('#slider-child').style;
-    if (slider_child.left !== '-300%') {
-        num -= 100;
+    if (slider_child.left !== mov) {
+        num += dir;
         slider_child.left = num + '%';
     }
 }
@@ -544,6 +535,7 @@ let copy_to_clip_board = () => {
     copy_link_inp.select();
     navigator.clipboard.writeText(copy_link_inp.value);
 
+    notif_sound.play();
     copied_massage.classList.remove('display');
 
     setTimeout(() => {
@@ -557,8 +549,10 @@ function app_theme_function() {
 
     for (let theme = 0; theme < app_themes.length; theme++) {
         app_themes[theme].addEventListener('click', () => {
-            if (brwoser_name === true && theme === 2)
+            if (brwoser_name === true && theme === 2) {
                 brwoser_doesnt_support.classList.remove('display');
+                notif_sound.play();
+            }
 
             else {
                 app_themes.forEach((value)=>{
@@ -646,6 +640,7 @@ function delete_all_data() {
     let body_overlay = document.querySelector('.body-overlay');
     let warning_box = document.querySelector('.delete-data-warning');
     let warning_btn = document.querySelectorAll('.warning-btn');
+    notif_sound.play();
 
     body_overlay.classList.remove('display-none');
     warning_box.classList.remove('display-none');
