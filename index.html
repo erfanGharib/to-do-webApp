@@ -44,14 +44,20 @@
                 <div id="search-box-child-1">
                     <span id="search-btn-inp">
                         <span id="search-button" onclick="increas_searchBox_width()"><i class="fi-rr-search"></i></span>
-                        <input oninput="search_box()" onclick="search_input();search_box()" type="search"
-                            id="search-input" placeholder="search the list.." spellcheck="false">
+                        <input 
+                            oninput="search_box()" 
+                            onclick="search_box_v.classList.add('search-box-bg');search_box()" 
+                            type="search"
+                            id="search-input" 
+                            placeholder="search the list.." 
+                            spellcheck="false"
+                        >
                     </span>
 
                     <span id="search-filter-btn">
                         <b style="color:var(--header-text-color)">filter :</b>
-                        <button class="search-filter" onclick="search_date_filter()">date</button>
-                        <button class="search-filter background" onclick="search_text_filter()">text</button>
+                        <button class="search-filter" onclick=" search_filter_$func(1,0)">date</button>
+                        <button class="search-filter background" onclick=" search_filter_$func(0,1)">text</button>
                     </span>
                 </div>
 
@@ -69,9 +75,9 @@
                 </div>
 
                 <div id="slider">
-                    <button class="slider-btn" onclick="slider_left_angle()"><i
+                    <button class="slider-btn" onclick="slider_angle(100, '0%')"><i
                             class="fi-rr-angle-small-left"></i></button>
-                    <button class="slider-btn second" onclick="slider_right_angle()"><i
+                    <button class="slider-btn second" onclick="slider_angle(-100, '-300%')"><i
                             class="fi-rr-angle-small-right"></i></button>
                     <span id="slider-child" style="left: 0;">
                         <span class="slider-child-part fourth"></span>
