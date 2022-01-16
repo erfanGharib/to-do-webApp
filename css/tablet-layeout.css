@@ -60,7 +60,11 @@ body {
 #delete-all-data-box {
     margin-top: 23px !important;
 }
-
+#header-child {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
 #search-sugestion {
     width: 91.3% !important;
 }
@@ -244,8 +248,6 @@ main {
     min-height: 60px;
     overflow-x: hidden;
     padding-left: 5px;
-    margin-left: 30px;
-    /* display: none; */
 }
 #search-sugestion {
     position: absolute;

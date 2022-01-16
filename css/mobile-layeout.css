@@ -79,7 +79,6 @@ header {
 .search-box {
     min-height: 50px !important;
     overflow: hidden;
-    margin: 0 0 0 13px;
     width: 40px;
 }
 #search-input {
@@ -203,9 +202,6 @@ body {
 }
 #add-ToDo-part {
     width: 100%;
-}
-#translate {
-    margin-left: 13px;
 }
 .goog-te-combo {
     font-size: var(--header-font-size);
