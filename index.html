@@ -34,36 +34,37 @@
 
     <div id="center-part">
         <header>
-            <div id="translate">
-                <i class="fi-rr-globe"></i>
-                <div id="google-translate-element">
+            <div id="header-child">
+                <div id="translate">
+                    <i class="fi-rr-globe"></i>
+                    <div id="google-translate-element">
+                    </div>
                 </div>
-            </div>
-
-            <div onmouseover="clear_timeout()" onmouseleave="search_box_mouseleave()" class="search-box">
-                <div id="search-box-child-1">
-                    <span id="search-btn-inp">
-                        <span id="search-button" onclick="increas_searchBox_width()"><i class="fi-rr-search"></i></span>
-                        <input 
-                            oninput="search_box()" 
-                            onclick="search_box_v.classList.add('search-box-bg');search_box()" 
-                            type="search"
-                            id="search-input" 
-                            placeholder="search the list.." 
-                            spellcheck="false"
-                        >
-                    </span>
-
-                    <span id="search-filter-btn">
-                        <b style="color:var(--header-text-color)">filter :</b>
-                        <button class="search-filter" onclick=" search_filter_$func(1,0)">date</button>
-                        <button class="search-filter background" onclick=" search_filter_$func(0,1)">text</button>
+    
+                <div onmouseover="clear_timeout()" onmouseleave="search_box_mouseleave()" class="search-box">
+                    <div id="search-box-child-1">
+                        <span id="search-btn-inp">
+                            <span id="search-button" onclick="increas_searchBox_width()"><i class="fi-rr-search"></i></span>
+                            <input 
+                                oninput="search_box()" 
+                                onclick="search_box_v.classList.add('search-box-bg');search_box()" 
+                                type="search"
+                                id="search-input" 
+                                placeholder="search the list.." 
+                                spellcheck="false"
+                            >
+                        </span>
+    
+                        <span id="search-filter-btn">
+                            <b style="color:var(--header-text-color)">filter :</b>
+                            <button class="search-filter" onclick=" search_filter_$func(1,0)">date</button>
+                            <button class="search-filter background" onclick=" search_filter_$func(0,1)">text</button>
+                        </span>
+                    </div>
+    
+                    <span id="search-sugestion" class="skiptranslate">
                     </span>
                 </div>
-
-                <span id="search-sugestion" class="skiptranslate">
-                    <span id="not-found-text"><b>not found</b></span>
-                </span>
             </div>
         </header>
 
@@ -92,6 +93,8 @@
                 <p id="no-added-toDo-text">No to do note added yet</p>
             </span>
         </main>
+
+        <p id="version">v 1.2.1</p>
     </div>
 
     <div class="fill-input-error-massage app-massage display">
