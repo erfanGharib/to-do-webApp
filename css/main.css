@@ -162,11 +162,11 @@ button, input, select, textarea, body, p, b, div, span, figcaption, input::place
     display: none !important;
 }
 .increase-width {
-    width: 90% !important;
+    width: 100% !important;
     margin: 0;
 }
 .increase-width-mobile {
-    width: 96% !important;
+    width: 100% !important;
     margin: 0;
     padding: 0 !important;
 }

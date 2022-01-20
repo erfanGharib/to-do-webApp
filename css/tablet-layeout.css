@@ -10,8 +10,8 @@ header {
     min-height: 80px;
     border: none;
     border-right: 1px solid var(--header-background);
-    justify-content: flex-end;
-    flex-direction: row-reverse;
+    justify-content: center;
+    /* flex-direction: row-reverse; */
 }
 h3 {
     font-size: 30px;
@@ -61,9 +61,9 @@ body {
     margin-top: 23px !important;
 }
 #header-child {
-    flex-direction: row-reverse;
     justify-content: flex-start;
-    align-items: flex-start;
+    width: 90%;
+    /* align-items: center; */
 }
 #search-sugestion {
     width: 91.3% !important;
