@@ -624,7 +624,6 @@ function font_size_check_box() {
 
                 this.checked = true
                 this.setAttribute('checked', 'checked');
-                // console.log(document.querySelector('html').style);
                 set_page_data();
             })
         });
