@@ -156,9 +156,11 @@ body_part.onload = () => {
 
     update_search_var();
     ToDo_note_iconS_function();
-    change_font_size();
+    // change_font_size();
     done_btn_function();
     update_not_found_text();
+
+    css_root.style.cssText=L_S.getItem('font-size');
 
     if (L_S.getItem('app-theme') != null)
         root_styleSheet.setAttribute('href', L_S.getItem('app-theme'));
@@ -199,19 +201,13 @@ let load_page_$func =(index)=> {
                 break;
             }
             case 1: case 3:{
+                if (num_4==1) 
+                    get_page_data()
                 font_size_check_box();
                 app_theme_function();
                 search_box_v.style.display = 'none'
                 google_translate.classList.remove('display-none');
                 let app_themes = document.querySelectorAll('.chose-theme-part-option');
-
-                if (num_4==1) {     
-                    app_themes.forEach((value) => value.classList.remove('background'));
-
-                    app_themes[
-                        L_S.getItem('app-theme-index')
-                    ].classList.add('background');
-                }
                 break;
             }
             case 2: {
@@ -259,17 +255,13 @@ function get_page_data() {
         search_sugestion.innerHTML = L_S.getItem('search-suggestion-home')
     }
     else if (num_4 == 1 && L_S.getItem(`html-page${1}`) != null) {
-        alert()
         main_page_part.innerHTML = L_S.getItem(`html-page${1}`);
         search_sugestion.innerHTML = L_S.getItem('search-suggestion-saved');
 
         document.querySelectorAll('.chose-theme-part-option')[
-            L_S.setItem('app-theme-index', theme)
+            L_S.getItem('app-theme-index')
         ].classList.add('background');
     }
-
-    if (L_S.getItem('app-theme') != null) 
-        root_styleSheet.setAttribute('href', L_S.getItem('app-theme'));
 }
 let change_URL =(url_num)=> {
     const url = new URL(window.location);
@@ -518,15 +510,15 @@ let increas_searchBox_width = () => {
         cls_toggle();
     }   
 }
-let change_font_size = () => {
-    remove_interval = setInterval(() => {
-        let browser_screen_width = parseInt(screen.width);
-        let css_root = document.querySelector(':root');
-        if (browser_screen_width <= 425) css_root.style.setProperty('--header-font-size', '13px')
-        else if (browser_screen_width <= 768) css_root.style.setProperty('--header-font-size', '21px')
-        else css_root.style.setProperty('--header-font-size', '17px')
-    }, 100)
-}
+// let change_font_size = () => {
+//     remove_interval = setInterval(() => {
+//         let browser_screen_width = parseInt(screen.width);
+//         let css_root = document.querySelector(':root');
+//         if (browser_screen_width <= 425) css_root.style.setProperty('--header-font-size', '13px')
+//         else if (browser_screen_width <= 768) css_root.style.setProperty('--header-font-size', '21px')
+//         else css_root.style.setProperty('--header-font-size', '17px')
+//     }, 100)
+// }
 
 // slider button function
 let slider_angle = (dir, mov) => {
@@ -611,12 +603,13 @@ function font_size_check_box() {
     });
 
     for (let index=0; index<3; index++) {
-        
         setting_check_boxses_$arr[index].forEach((value, check_box)=> {
             value.addEventListener('click', function() {
                 clearTimeout(remove_interval);
                 
                 css_root.style.setProperty(font_size_record[index], setting_page_font_size_var_property[check_box]);
+                L_S.setItem('font-size', css_root.style.cssText);
+                
                 for (let x = 0; x < 3; x++) {
                     setting_check_boxses_$arr[index][x].checked = false
                     setting_check_boxses_$arr[index][x].removeAttribute('checked', 'checked')
