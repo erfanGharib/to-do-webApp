@@ -1,4 +1,5 @@
 # To Do WebApp
+![Design preview for the todo app](todo-preview.png)
   -Full responsive to-do web application<br> 
   -No back-end used on this project and everything happens on front-end<br>
   -This project written with vanila.js, css and html
