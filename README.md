@@ -18,3 +18,5 @@
   https://to-do-web-app-eta.vercel.app/
   
 i try to work on this project everyday to fix its bugs and update it for you to enjoy :)
+## Project Status
+Updating
