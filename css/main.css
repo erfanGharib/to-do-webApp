@@ -460,8 +460,8 @@ h4 {
     transition: .5s;
     z-index: 3;
     animation:translate .5s forwards alternate;
-    background: var(--massage-back);
-    color: var(--border-color);
+    background: #ffffffe3;
+    color: #22303d;
     padding:10px;
     right: 0;
     display: flex;
@@ -627,7 +627,7 @@ h4 {
 
 
 .ToDo-note-part {
-    border:1px solid var(--text-color);
+    border:1px solid var(--border-color);
     border-radius: 6px;
     min-height: 105px;
     width: 93%;

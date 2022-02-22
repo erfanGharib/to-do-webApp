@@ -55,7 +55,7 @@ let input_;
 // todo part icon functions
 let added_toDo_icon_function_arr = [
     function save_note() {
-        saved_toDo+=this_.parentElement.parentElement.parentElement.innerHTML;
+        saved_toDo += this_.parentElement.parentElement.parentElement.innerHTML;
 
         L_S.setItem('saved-note', saved_toDo);
 
@@ -93,7 +93,7 @@ let added_toDo_icon_function_arr = [
             this_.parentElement.parentElement.remove();
             search_sugestion_child[num_6].remove();
 
-            if (ToDo_note_part.length == 1 && L_S.getItem('page-index')==0) {
+            if (ToDo_note_part.length == 1 && L_S.getItem('page-index') == 0) {
                 no_added_toDo_text.style.display = "flex";
                 not_found_text.style.display = 'flex';
             }
@@ -102,7 +102,7 @@ let added_toDo_icon_function_arr = [
                 saved_toDo = document.querySelector('#saved-to-do-grid').innerHTML;
                 L_S.setItem(`saved-note`, saved_toDo);
             }
-            
+
             set_page_data();
         }, 200);
     }
@@ -134,18 +134,18 @@ let root_styleSheet_hrefs = [
 ]
 
 const url_$arr = [
-    {url:'home', title:'Home | ToDo web App'},
-    {url:'setting', title:'Setting | ToDo web App'},
-    {url:'saved-notes', title:'Saved Notes | ToDo web App'},
-    {url:'about', title:'About | ToDo web App'}
+    { url: 'home', title: 'Home | ToDo web App' },
+    { url: 'setting', title: 'Setting | ToDo web App' },
+    { url: 'saved-notes', title: 'Saved Notes | ToDo web App' },
+    { url: 'about', title: 'About | ToDo web App' }
 ]
 
 body_part.onload = () => {
-    if(L_S.getItem('page-index')==null) L_S.setItem('page-index', 0);
-    if(L_S.getItem(`saved-note`) != null) saved_toDo = L_S.getItem(`saved-note`);
-    if(L_S.getItem('app-theme-index') == null) L_S.setItem('app-theme-index', 0);
+    if (L_S.getItem('page-index') == null) L_S.setItem('page-index', 0);
+    if (L_S.getItem(`saved-note`) != null) saved_toDo = L_S.getItem(`saved-note`);
+    if (L_S.getItem('app-theme-index') == null) L_S.setItem('app-theme-index', 0);
 
-    num_4=L_S.getItem('page-index');
+    num_4 = L_S.getItem('page-index');
     change_URL(L_S.getItem('page-index'));
 
     side_bar_icon.forEach((value) => {
@@ -160,7 +160,7 @@ body_part.onload = () => {
     done_btn_function();
     update_not_found_text();
 
-    css_root.style.cssText=L_S.getItem('font-size');
+    css_root.style.cssText = L_S.getItem('font-size');
 
     if (L_S.getItem('app-theme') != null)
         root_styleSheet.setAttribute('href', L_S.getItem('app-theme'));
@@ -188,45 +188,49 @@ side_bar_icon.forEach((value, index) => {
         get_page_data()
     });
 })
-let load_page_$func =(index)=> {
+let load_page_$func = (index) => {
     page_content_$html[index].then((data) => {
         main_page_part.innerHTML = data;
     })
-    .then(() => {
-        switch (parseInt(num_4)) {
-            case 0: {
-                get_page_data();
-                ToDo_note_iconS_function();
-                search_box_v.style.display = 'flex';
-                break;
-            }
-            case 1: case 3:{
-                if (num_4==1) 
-                    get_page_data()
-                font_size_check_box();
-                app_theme_function();
-                search_box_v.style.display = 'none'
-                google_translate.classList.remove('display-none');
-                let app_themes = document.querySelectorAll('.chose-theme-part-option');
-                break;
-            }
-            case 2: {
-                if (L_S.getItem(`saved-note`) !== null)
-                    document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
+        .then(() => {
+            switch (parseInt(num_4)) {
+                case 0: {
+                    get_page_data();
+                    ToDo_note_iconS_function();
+                    search_box_v.style.display = 'flex';
+                    break;
+                }
+                case 1: case 3: {
+                    if (num_4 == 1)
+                        get_page_data()
+                    font_size_check_box();
+                    app_theme_function();
+                    search_box_v.style.display = 'none'
+                    google_translate.classList.remove('display-none');
+                    let app_themes = document.querySelectorAll('.chose-theme-part-option');
+                    break;
+                }
+                case 2: {
+                    if (L_S.getItem(`saved-note`) !== null)
+                        document.querySelector('#saved-to-do-grid').innerHTML = L_S.getItem(`saved-note`);
 
-                get_page_data();
-                done_btn_function();
-                ToDo_note_iconS_function();
-                search_box_v.style.display = 'flex';
-                break;
+                    get_page_data();
+                    done_btn_function();
+                    ToDo_note_iconS_function();
+                    search_box_v.style.display = 'flex';
+                    break;
+                }
             }
-        }
-    })
+        })
 }
 function update_not_found_text() {
-    if(not_found_text==null || not_found_text==undefined)
-        search_sugestion.innerHTML+=`<span id="not-found-text"><b>not found</b></span>`;
-    not_found_text= document.querySelector('#not-found-text')
+    let not_found_text_$node = document.createElement('span');
+    not_found_text_$node.innerHTML = '<b>not found</b>';
+    not_found_text_$node.id = "not-found-text";
+    if (not_found_text == null || not_found_text == undefined) {
+        search_sugestion.appendChild(not_found_text_$node);
+        not_found_text = document.querySelector('#not-found-text')
+    }
 }
 
 function set_page_data() {
@@ -249,7 +253,7 @@ function get_page_data() {
         value.classList.remove('side-bar-icon-border');
     })
     side_bar_icon[L_S.getItem('page-index')].classList.add('side-bar-icon-border');
-    
+
     if (num_4 == 0 && L_S.getItem(`html-page${0}`) != null) {
         main_page_part.innerHTML = L_S.getItem(`html-page${0}`)
         search_sugestion.innerHTML = L_S.getItem('search-suggestion-home')
@@ -263,7 +267,7 @@ function get_page_data() {
         ].classList.add('background');
     }
 }
-let change_URL =(url_num)=> {
+let change_URL = (url_num) => {
     const url = new URL(window.location);
     url.searchParams.set('app-page', url_$arr[url_num].url);
     window.history.pushState({}, '', url);
@@ -280,7 +284,7 @@ function done_btn_function() {
     let ToDo_p_note = document.querySelectorAll('.ToDo-p-note');
     let make_changes_to_p_note = document.querySelectorAll('.make-changes-to-p-note');
 
-    make_changes_to_p_note.forEach((value, done_button)=>{
+    make_changes_to_p_note.forEach((value, done_button) => {
         value.addEventListener('click', function () {
             let created_date = document.querySelectorAll('.created-date')[done_button].innerHTML;
             let make_changes_to_p_note_textArea = make_changes_to_p_note[done_button].parentElement.firstElementChild.value;
@@ -304,10 +308,10 @@ function done_btn_function() {
 
             let ToDo_note_iconS = document.querySelectorAll('.ToDo-note-iconS');
 
-            if (side_bar_icon[2].classList.contains('side-bar-icon-border')) 
+            if (side_bar_icon[2].classList.contains('side-bar-icon-border'))
                 ToDo_note_iconS[0].style.display = 'none';
-                
-            if (ToDo_p_note[num_2] !== null && ToDo_p_note[num_2] !== undefined) 
+
+            if (ToDo_p_note[num_2] !== null && ToDo_p_note[num_2] !== undefined)
                 ToDo_p_note[num_2].innerHTML = make_changes_to_p_note_textArea;
 
             if (num_4 === 2) {
@@ -331,10 +335,11 @@ function create_todo__show_popUp() {
     if (add_toDo_note_input.value !== '' && add_toDo_note_input.value.includes('<', '>') === false) {
         update_not_found_text()
         num_2 += 1;
-        
+
         let insert_zero_before_day = _date.getDate() < 10 ? '0' + _date.getDate() : _date.getDate();
         let insert_zero_before_month = _date.getMonth() < 10 ? '0' + (_date.getMonth() + 1) : (_date.getMonth() + 1);
-        
+
+        // if ()
         not_found_text.style.display = 'none';
         no_added_toDo_text.style.display = "none";
         search_sugestion.innerHTML += (`
@@ -496,7 +501,7 @@ let increas_searchBox_width = () => {
     let google_translate = document.querySelector('#translate');
     let browser_screen_width = parseInt(screen.width);
 
-    const cls_toggle =()=> {
+    const cls_toggle = () => {
         search_box_v.classList.toggle('search-box-bg');
         google_translate.classList.toggle('display-none');
     }
@@ -504,11 +509,11 @@ let increas_searchBox_width = () => {
     if (browser_screen_width <= 768 && browser_screen_width > 425) {
         search_box_v.classList.toggle('increase-width');
         cls_toggle();
-    } 
+    }
     else if (browser_screen_width <= 425) {
-        search_box_v.classList.toggle('increase-width-mobile'); 
+        search_box_v.classList.toggle('increase-width-mobile');
         cls_toggle();
-    }   
+    }
 }
 // let change_font_size = () => {
 //     remove_interval = setInterval(() => {
@@ -552,7 +557,7 @@ function app_theme_function() {
             if (brwoser_name === true && theme === 2) {
                 brwoser_doesnt_support.classList.remove('display');
                 notif_sound.play();
-                
+
                 setTimeout(() => {
                     brwoser_doesnt_support.classList.add('display');
                 }, 4000);
@@ -583,9 +588,9 @@ function font_size_check_box() {
         document.querySelectorAll('.font-size-check-box-2'),
     ]
     let font_sizes_text = document.querySelectorAll('.font-size');
-    let browser_screen_width = parseInt(screen.width);    
-    
-    font_sizes_text.forEach((value,font_sizes) => {
+    let browser_screen_width = parseInt(screen.width);
+
+    font_sizes_text.forEach((value, font_sizes) => {
         if (browser_screen_width <= 768) {
             font_sizes_text[font_sizes].innerHTML = tablet_font_sizes[font_sizes];
             setting_page_font_size_var_property = ['21px', '23px', '25px']
@@ -602,14 +607,14 @@ function font_size_check_box() {
         }
     });
 
-    for (let index=0; index<3; index++) {
-        setting_check_boxses_$arr[index].forEach((value, check_box)=> {
-            value.addEventListener('click', function() {
+    for (let index = 0; index < 3; index++) {
+        setting_check_boxses_$arr[index].forEach((value, check_box) => {
+            value.addEventListener('click', function () {
                 clearTimeout(remove_interval);
-                
+
                 css_root.style.setProperty(font_size_record[index], setting_page_font_size_var_property[check_box]);
                 L_S.setItem('font-size', css_root.style.cssText);
-                
+
                 for (let x = 0; x < 3; x++) {
                     setting_check_boxses_$arr[index][x].checked = false
                     setting_check_boxses_$arr[index][x].removeAttribute('checked', 'checked')
@@ -628,12 +633,12 @@ function delete_all_data() {
     body_overlay.classList.remove('display-none');
     warning_box.classList.remove('display-none');
 
-    warning_btn.forEach((value, index)=>{
+    warning_btn.forEach((value, index) => {
         value.addEventListener('click', () => {
             body_overlay.classList.add('display-none');
             warning_box.classList.add('display-none');
 
-            if (index==1) {
+            if (index == 1) {
                 L_S.clear();
                 window.location.reload();
             }
